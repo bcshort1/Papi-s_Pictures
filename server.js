@@ -5,8 +5,23 @@ const PORT = 3000;
 
 const db = require ('./db.json');
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/media', express.static(path.join(__dirname, 'media', 'media_display')));
+const staticOptions = {
+    dotfiles: 'deny',
+    etag: true,
+    index: false,
+    maxAge: '1d'
+};
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.use(
+    '/assets/logos_and_thumbnails',
+    express.static(path.join(__dirname, 'assets', 'logos_and_thumbnails'), staticOptions)
+);
+
+app.use('/media', express.static(path.join(__dirname, 'media', 'media_display'), staticOptions));
 
 app.get('/api', (req, res) => {
     res.json(db);
