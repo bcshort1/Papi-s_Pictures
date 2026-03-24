@@ -1,0 +1,161 @@
+{
+    "photoVideoServices": [
+        {
+            "id": 1,
+            "serviceName": "Personal Print License",
+            "serviceDescription": "License Papi's images to print yourself. Simply print at a supported size based on the image aspect ratio.",
+            "price": 5
+        },
+        {
+            "id": 2,
+            "serviceName": "Personal Video License",
+            "serviceDescription": "License Papi's images to use in personal videos. Simply use at a supported size based on the image aspect ratio.",
+            "price": 5
+        },
+        {
+            "id": 3,
+            "serviceName": "Commercial Print and Marketing License",
+            "serviceDescription": "License Papi's images to print and use in marketing materials. Simply print at a supported size based on the image aspect ratio.",
+            "price": 20
+        },
+        {
+            "id": 4,
+            "serviceName": "Video Commercial Marketing License",
+            "serviceDescription": "License Papi's images to use in video marketing materials. Simply use at a supported size based on the image aspect ratio.",
+            "price": 20
+        },
+        {
+            "id": 5,
+            "serviceName": "Multimedia Use License",
+            "serviceDescription": "License Papi's images to use in multimedia projects such as film and animation. Simply use at a supported size based on the image aspect ratio.",
+            "price": 50
+        },
+        {
+            "id": 6,
+            "serviceName": "Graduation Photo Package",
+            "serviceDescription": "A package of 10 high-resolution images from Papi's graduation photoshoot. Perfect for sharing with family and friends.",
+            "price": 500
+        },
+        {
+            "id": 7,
+            "serviceName": "Custom Photo Shoot",
+            "serviceDescription": "Book a custom photo shoot with Papi. Perfect for capturing special moments or creating unique content.",
+            "price": 1000
+        },
+        {
+            "id": 8,
+            "serviceName": "Wedding Photo Package",
+            "serviceDescription": "A package of 50 high-resolution images from Papi's wedding photoshoot. Perfect for sharing with family and friends.",
+            "price": 2000
+        }
+    ],
+    "recentPictures": [
+        {
+            "id": 1,
+            "title": "Closeup of Herron at Arcadia Marsh 2",
+            "description": "Another closeup image of a herron at Arcadia Marsh.",
+            "fileName": "Closeup of Herron at Arcadia Marsh 2_P8300146_photos_db_sized_photo_25.png",
+            "alt": "Heron at Arcadia Marsh",
+            "creator": "Scott Short",
+            "city": "Arcadia",
+            "state": "Michigan",
+            "country": "United States",
+            "imageWidth": 1600,
+            "imageHeight": 1200,
+            "featured": false
+        },
+        {
+            "id": 2,
+            "title": "Bird's Eye View of Manistee",
+            "description": "Bird's Eye picture of Manistee",
+            "fileName": "Bird's Eye View of Manistee_DJI_20250628172944_0726_D-HDR_photos_db_sized_photo_11.png",
+            "alt": "Bird's eye view of Manistee",
+            "creator": "Scott Short",
+            "city": "Manistee",
+            "state": "Michigan",
+            "country": "United States",
+            "imageWidth": 1600,
+            "imageHeight": 1200,
+            "featured": false
+        },
+        {
+            "id": 3,
+            "title": "Point Betsie Sunny Day",
+            "description": "Picture of Point Betsie on a sunny day.",
+            "fileName": "Point Betsie Sunny Day_DJI_20250905150029_0444_D-HDR_photos_db_sized_photo_32.png",
+            "alt": "Point Betsie sunny day",
+            "creator": "Scott Short",
+            "city": "Frankfort",
+            "state": "Michigan",
+            "country": "United States",
+            "imageWidth": 1600,
+            "imageHeight": 1200,
+            "featured": false
+        },
+        {
+            "id": 4,
+            "title": "Livesaving Station in Frankfort",
+            "description": "Picture of the Livesaving Station in Frankfort.",
+            "fileName": "Livesaving Station in Frankfort_DJI_20250830202221_0049_D-HDR_photos_db_sized_photo_27.png",
+            "alt": "Lifesaving Station in Frankfort",
+            "creator": "Scott Short",
+            "city": "Frankfort",
+            "state": "Michigan",
+            "country": "United States",
+            "imageWidth": 1600,
+            "imageHeight": 1200,
+            "featured": false
+        },
+        {
+            "id": 5,
+            "title": "Foggy Morning on the Lake",
+            "description": "Picture of a foggy morning on the lake.",
+            "fileName": "Foggy Morning on the Lake_DJI_20250927081415_0091_D-HDR_photos_db_sized_photo_35.png",
+            "alt": "Foggy morning on the lake",
+            "creator": "Scott Short",
+            "city": "Beulah",
+            "state": "Michigan",
+            "country": "United States",
+            "imageWidth": 1600,
+            "imageHeight": 1200,
+            "featured": true
+        }
+    ],
+    "whatsNewItems": [
+        {
+            "id": 1,
+            "date": "March 21, 2026",
+            "title": "Moved Hosting to Raspberry Pi 5",
+            "description": "I moved the site and API to a Raspberry Pi 5 microserver (16GB RAM, 1TB NVMe) with Cloudflare Tunnel and registered domain papispictures.com for public access. I did this because it was easier to manage than Render for this project, gives me more control, and avoids potential monthly hosting costs.",
+            "tag": "Infrastructure"
+        },
+        {
+            "id": 2,
+            "date": "March 21, 2026",
+            "title": "Added Node.js + Express Backend",
+            "description": "The site is no longer static-only. Services and 'What's new' cards, and recent pictures photos are now loaded from a Node.js + Express API at /api. This allows for dynamic content management and sets the stage for future features like a MongoDB-backed gallery and licensing system.",
+            "tag": "Development"
+        },
+        {
+            "id": 3,
+            "date": "March 21, 2026",
+            "title": "Navigation and Layout Cleanup",
+            "description": "I cleaned up the frontend structure and fixed mobile navigation behavior. Fixed broken menu links.The page now uses a clearer section layout (welcome, about, updates, services), and the hamburger menu works reliably with anchor links. Website is currently a single page design where additional pages will be added as needed for future features like the gallery and licensing system.",
+            "tag": "Design"
+        },
+        {
+            "id": 4,
+            "date": "March 21, 2026",
+            "title": "Added Additional Content Sections",
+            "description": "Added additional content in the form of an 'About section' and a 'What's New' section that can be used to provide notes on updates for the site and service changes, and promotions. ",
+            "tag": "Content"
+        },
+        {
+            "id": 5,
+            "date": "March 21, 2026",
+            "title": "Next Up: Full Gallery and Licensing",
+            "description": "Next step is a MongoDB-backed gallery system for dynamic photo/video management. Planned work includes search and filters, gallery creation (collections of photos that share a theme), tagging, and direct license purchases through the site.",
+            "tag": "Roadmap"
+        }
+    ]
+}

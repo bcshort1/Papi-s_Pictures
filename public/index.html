@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papi's Pictures</title>
+    <link rel="shortcut icon" href="assets/images/logo-137x139.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Raleway:wght@300;400;500;600;700&display=swap">
+
+    <style>
+        /* Reset some default styles for all elements. */
+        *,
+        *::before,
+        *::after {
+            /* Remove default margin from all elements. */
+            margin: 0;
+            /* Remove default padding from all elements. */
+            padding: 0;
+            /* Use border-box for box-sizing to include padding and border in the element's total width and height. */
+            box-sizing: border-box;
+        }
+
+        /* Color palette inspired by the Northern Michigan landscape. I want this website to scream Michigan. My family is really about that "Lake Life". */
+        :root {
+            /* Define a deeper blue color to represent the lakes of the "Great Lakes State". */
+            --lake: #1B4965;
+            /* Define a lighter blue color to represent the sky. */
+            --sky: #5FA8D3;
+            /* Define a warm sand color to represent the beaches and dunes along the Michigan coastline. */
+            --sand: #E8DCC4;
+            /* Define a warm sunset color. Our goal is to catch every sunset we can. */
+            --sunset: #D4923A;
+            /* Define a deep green to represent the pine forest. Michigan's State tree is the Eastern White Pine. */
+            --pine: #2D4A3E;
+            /* Define a light color to represent the dense birch forests. */
+            --birch: #F5F1EB;
+            /* Define a dark color for text and other elements to ensure good contrast against the lighter background colors. */
+            --dark: #1a1a1a;
+            /* Define a white color for text and other elements that need to stand out against darker backgrounds. */
+            --white: #ffffff;
+        }
+
+        /* Activate smooth scrolling for the entire document. */
+        html {
+            scroll-behavior: smooth;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Global styles. */
+        body {
+            /* Font family for the entire website, using Raleway. */
+            font-family: 'Raleway', sans-serif;
+            /* Use the dark color for text to ensure good contrast against the lighter background colors. */
+            color: var(--dark);
+            /* Use the birch color for the background. */
+            background-color: var(--birch);
+            /* Set line height for better readability. */
+            line-height: 1.6;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Heading styles. */
+        h1,
+        h2,
+        h3 {
+            /* Use the Libre Baskerville font for headings. */
+            font-family: 'Libre Baskerville', serif;
+        }
+
+        /* Link styles. */
+        a {
+            /* Remove default text decoration. */
+            text-decoration: none;
+            /* Inherit the color from the parent element to ensure links match the surrounding text color. */
+            color: inherit;
+        }
+
+        /* Image styles. */
+        img {
+            /* Ensure images are responsive and scale appropriately within their containers while maintaining their aspect ratio. */
+            max-width: 100%;
+            /* Set display to block to remove any unwanted space below images. */
+            display: block;
+        }
+
+        /* Grid layout for the main sections. */
+        .page-grid {
+            /* Define a grid layout with named areas for header, main content, and footer. */
+            display: grid;
+            /* Single column layout with auto rows for each section. */
+            grid-template-columns: 1fr;
+            /* Define rows for each section with auto height. */
+            grid-template-rows: auto 1fr auto;
+            /* Assign named grid areas. */
+            grid-template-areas:
+                "header"
+                "main"
+                "footer";
+            /* Ensure the grid takes up at least the full viewport height. */
+            min-height: 100vh;
+        }
+
+        /* Header styles. */
+        .site-header {
+            /* Assign the header to the 'header' grid area. */
+            grid-area: header;
+            /* Use the lake color for the header background. */
+            background-color: var(--lake);
+            /* Make the header sticky so it remains visible at the top of the viewport when scrolling. */
+            position: sticky;
+            /* Stick to the top of the viewport. */
+            top: 0;
+            /* Use z-index to ensure the header stays above other content and does not slip behind other elements. */
+            z-index: 1000;
+            /* Add a header border. */
+            border-bottom: 3px solid var(--sunset);
+        }
+
+        /* Navigation container styles. */
+        .nav-container {
+            /* Use flexbox to layout navigation links within the header. */
+            display: flex;
+            /* Space out the navigation links. */
+            justify-content: space-between;
+            /* Center the items vertically. */
+            align-items: center;
+            /* Limit the maximum width of the navigation container. */
+            max-width: 1200px;
+            /* Using margin auto to center the navigation container horizontally. */
+            margin: 0 auto;
+            /* Add padding for spacing around the links. */
+            padding: 0.5rem 1.5rem;
+        }
+
+        /* Logo styles for the header. */
+        .logo {
+            /* Use flexbox to align the logo image and text. */
+            display: flex;
+            /* Vertically center the logo. */
+            align-items: center;
+        }
+
+        /* Logo image styles with a circular shape and border. */
+        .logo img {
+            /* Set a fixed height for the logo image. This value maintains the aspect ratio of the logo image. */
+            height: 50px;
+            /* Set the border radius to 50% to make the border circular. */
+            border-radius: 50%;
+            /* Add a border around the logo image. Same color and width as the header border. */
+            border: 3px solid var(--sunset);
+        }
+
+        /* Navigation link styles for the header. */
+        .nav-links {
+            /* Use flexbox to layout the navigation links horizontally. */
+            display: flex;
+            /* Remove default list styling. */
+            list-style: none;
+            /* Add space between each navigation link. */
+            gap: 1.2rem;
+            /* Vertically center the navigation links. */
+            align-items: center;
+        }
+
+        /* Navigation link styles for active states. */
+        .nav-links a {
+            /* Use the sand color for navigation links. */
+            color: var(--sand);
+            /* Make the navigation links bold for better visibility. */
+            font-weight: bold;
+            /* Set a smaller font size for the navigation links. */
+            font-size: 0.82rem;
+            /* Add a transition effect for color changes on hover. */
+            transition: color;
+        }
+
+        /* Hover color change for navigation links. */
+        .nav-links a:hover {
+            /* Set color to the sunset color on hover. */
+            color: var(--sunset);
+        }
+
+        /* Hamburger menu styles for mobile screens. */
+        .hamburger {
+            /* Initially hide the hamburger menu on larger screens. */
+            display: none;
+            /* Use flex direction column to layout the hamburger lines vertically. */
+            flex-direction: column;
+            /* Change the cursor to a pointer to indicate it's clickable. */
+            cursor: pointer;
+            /* Add space between the hamburger lines. */
+            gap: 5px;
+        }
+
+        /* Hamburger line styles with a background color and rounded edges. */
+        .hamburger span {
+            /* Set a fixed width and height for the hamburger lines. */
+            width: 25px;
+            height: 3px;
+            /* Use the sunset color for the hamburger lines. */
+            background-color: var(--sunset);
+            /* Add a border radius to the hamburger lines for rounded edges. */
+            border-radius: 3px;
+        }
+
+        /* Transform the hamburger lines into an 'X' when activated. */
+        .hamburger.active span:nth-child(1) {
+            /* Rotate the first line 45 degrees and move it down to create the top part of the 'X'. */
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        /* Hide the middle line of the hamburger menu when active to create a cleaner 'X' shape. */
+        .hamburger.active span:nth-child(2) {
+            /* Set the opacity to 0 to hide the middle line when the hamburger menu is active. */
+            visibility: hidden;
+        }
+
+        /* Rotate the third line -45 degrees and move it up to create the bottom part of the 'X'. */
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        /* Main content area styles. */
+        .site-main {
+            /* Assign the main content to the 'main' grid area. */
+            grid-area: main;
+            width: 100%;
+            overflow-x: clip;
+        }
+
+        /* Welcome section styles. */
+        .welcome {
+            /* Use relative positioning. */
+            position: relative;
+            /* Set a minimum height for the welcome section. With this value it will take up at least 70% of the viewport height. */
+            min-height: 70vh;
+            /* Hide any overflow content to prevent scrollbars from appearing if the background image is larger than the section. */
+            overflow: hidden;
+            /* Color for the welcome text. */
+            color: var(--white);
+        }
+
+        /* Background image styles for the welcome section, covering the entire area and maintaining aspect ratio. */
+        .welcome-bg {
+            /* Use absolute positioning to place the background image behind the welcome content. */
+            position: absolute;
+            /* Use inset to cover the entire parent area even as the screen size decreases. */
+            inset: 0;
+        }
+
+        /* Welcome background image styles. */
+        .welcome-bg img {
+            width: 100%;
+            height: 100%;
+            /* Use object-fit to cover the area without distortion, cropping if necessary. */
+            object-fit: cover;
+        }
+
+        /* Overlay styles to darken the background image for better text contrast. */
+        .welcome-overlay {
+            /* Use absolute positioning to place the overlay on top of the background image. */
+            position: absolute;
+            /* Use inset to cover the entire parent area even as the screen size decreases. */
+            inset: 0;
+            /* Use a semi-transparent black background to create a darkening effect over the background image. */
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        /* Welcome content styles to position the text above the background and overlay. */
+        .welcome-content {
+            /* Use relative positioning to ensure the welcome content is above the background and overlay. */
+            position: relative;
+            /* Set a higher z-index to ensure the welcome content is above the background and overlay. */
+            z-index: 1;
+            /* Limit the maximum width of the welcome content. */
+            max-width: 800px;
+            /* Add padding around the welcome content for spacing. */
+            padding: 8rem 2rem 5rem;
+            /* Use flexbox to layout. */
+            display: flex;
+            /* Stack the heading and paragraph vertically. */
+            flex-direction: column;
+            /* Add space between the heading and paragraph for better readability. */
+            gap: 0.8rem;
+        }
+
+        /* Welcome heading styles. */
+        .welcome h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+
+        /* Welcome paragraph styles. */
+        .welcome p {
+            font-size: 1rem;
+            font-weight: 300;
+            opacity: 1;
+        }
+
+        /* Welcome call-to-action button styles. */
+        .welcome-cta {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 2rem;
+            background-color: var(--sunset);
+            color: var(--white);
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            width: fit-content;
+        }
+
+        /* Hover effect for the welcome call-to-action button. */
+        .welcome-cta:hover {
+            background-color: #b87a2e;
+        }
+
+        /* Gallery section styles. */
+        .gallery-section {
+            /* Add padding around the gallery section for spacing. */
+            padding: 3rem 2rem;
+        }
+
+        /* Gallery section heading styles. */
+        .gallery-section h2 {
+            font-size: 2rem;
+            /* Use the lake color for the gallery section heading. */
+            color: var(--lake);
+            /* Add space below the heading for separation from the gallery grid. */
+            margin-bottom: 2rem;
+            /* Center the gallery section heading. */
+            text-align: center;
+        }
+
+        /* Gallery grid styles for a 4-column layout with a larger featured image and smaller images on the left. */
+        .gallery-grid {
+            /* Use CSS Grid to create a layout for the gallery images. */
+            display: grid;
+            /* Define a 4-column grid layout for the gallery section. */
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            /* Define two rows for the gallery grid, allowing for a larger featured image and smaller images on the left. */
+            grid-template-rows: auto auto;
+            /* Add space between the gallery items. */
+            gap: 1rem;
+            /* Limit the maximum width of the gallery grid and center it on the page. */
+            max-width: 1200px;
+            /* Center the gallery grid horizontally. */
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Styles for the smaller grid of images on the left side of the gallery section. */
+        .gallery-small-grid {
+            /* Position the smaller grid to take up the first two columns and both rows of the gallery grid. */
+            grid-column: 1 / 3;
+            /* Position the smaller grid to take up both rows of the gallery grid. */
+            grid-row: 1 / 3;
+            /* Use CSS Grid to layout the smaller images in a 2x2 grid within the left side of the gallery section. */
+            display: grid;
+            /* Define a 2-column grid layout for the smaller images on the left side of the gallery section. */
+            grid-template-columns: 1fr 1fr;
+            /* Define two rows for the smaller images on the left side of the gallery section. */
+            grid-template-rows: 1fr 1fr;
+            /* Add space between the smaller gallery items for better visual separation. */
+            gap: 1rem;
+        }
+
+        /* Styles for the larger featured image on the right side of the gallery section. */
+        .gallery-large {
+            /* Position the larger featured image to take up the last two columns and both rows of the gallery grid. */
+            grid-column: 3 / 5;
+            /* Position the larger featured image to take up both rows of the gallery grid. */
+            grid-row: 1 / 3;
+        }
+
+        /* Styles for individual gallery items. */
+        .gallery-item {
+            /* Add a border radius to the gallery items for rounded corners. */
+            border-radius: 6px;
+            /* Hide any overflow content to maintain the rounded corners and prevent scrollbars from appearing. */
+            overflow: hidden;
+            /* Add a transition effect for the transform property. */
+            transition: transform;
+        }
+
+        /* Hover effect for gallery items to slightly scale up the image. */
+        .gallery-item:hover {
+            /* Scale up the gallery item slightly on hover to create a subtle zoom effect. */
+            transform: scale(1.02);
+        }
+
+        /* Styles for images within gallery items. */
+        .gallery-item img {
+            /* Ensure the image covers the entire gallery item area. */
+            width: 100%;
+            height: 100%;
+            /* Use object-fit to cover the area, cropping if necessary. */
+            object-fit: cover;
+        }
+
+        /* Services section styles. */
+        .services-section {
+            /* Add padding around the services section for spacing. */
+            padding: 3rem 2rem;
+            /* Use the lake color for the services section background. */
+            background-color: var(--lake);
+            /* Use the birch color for text in the services section. */
+            color: var(--birch);
+        }
+
+        /* Services section heading styles with a specific color and spacing. */
+        .services-section h2 {
+            /* Set the font size for the services section heading. */
+            font-size: 2rem;
+            /* Set the margin below the services section heading. */
+            margin-bottom: 2rem;
+            /* Align the services section heading to center. */
+            text-align: center;
+        }
+
+        /* Services grid styles. */
+        .services-grid {
+            /* Use CSS Grid to create a layout for the service cards in the services section. */
+            display: grid;
+            /* Define a 4-column grid layout for the service cards in the services section. */
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            /* Add space between the service cards in the services grid. */
+            gap: 1rem;
+            /* Limit the maximum width of the services grid and center it on the page. */
+            max-width: 1200px;
+            /* Set the margin to auto to center the services grid horizontally on the page. */
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Styles for individual service cards. */
+        .service-card {
+            /* Use a semi-transparent border for the service cards. */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            /* Add a border radius to the service cards for rounded corners. */
+            border-radius: 6px;
+            /* Add padding around the content of the service cards. */
+            padding: 1rem;
+            /* Use flexbox to layout the service cards. */
+            display: flex;
+            /* Stack the content of the service cards vertically. */
+            flex-direction: column;
+            /* Add space between the elements within the service cards. */
+            gap: 0.5rem;
+            /* Add a transition effect for the transform property on hover. */
+            transition: transform;
+        }
+
+        /* Hover effect for service cards to slightly lift the card. */
+        .service-card:hover {
+            /* Scale up the service card slightly on hover. */
+            transform: translateY(-3px);
+        }
+
+        /* Styles for the service card title. */
+        .service-card h3 {
+            /* Set the font size for the service card title. */
+            font-size: 1rem;
+            /* Use the sand color for the service card title. */
+            color: var(--sand);
+            /* Set the font weight for the service card title. */
+            font-weight: 400;
+        }
+
+        /* Styles for the service card description. */
+        .service-card p {
+            /* Set the font size for the service card description. */
+            font-size: 0.8rem;
+            /* Use the birch color for the service card description. */
+            color: var(--birch);
+            /* Set the font weight for the service card description. */
+            font-weight: 300;
+            /* Use flex 1 to allow the service card description to take up any remaining vertical space within the service card. */
+            flex: 1;
+        }
+
+        /* Styles for the service card price. */
+        .service-price {
+            /* Use the Libre Baskerville font for the service card price. */
+            font-family: 'Libre Baskerville', serif;
+            /* Set the font size for the service card price. */
+            font-size: 1.2rem;
+            /* Set the font weight for the service card price. */
+            font-weight: 700;
+            /* Use the sunset color for the service card price. */
+            color: var(--sunset);
+            /* Align the service card price to the center. */
+            text-align: center;
+            /* Use margin-top: auto to push the service card price to the bottom of the service card. */
+            margin-top: auto;
+            /* Add padding to the top of the service card price. */
+            padding-top: 1rem;
+        }
+
+        /* Styles for the service card price span. */
+        .service-price span {
+            /* Set the font size for the service card price span. */
+            font-size: 1rem;
+            /* Use Raleway for the service card price span. */
+            font-family: 'Raleway', sans-serif;
+            /* Use a semi-transparent white color for the service card price span. */
+            color: rgba(245, 241, 235, 0.4);
+            /* Set the font weight for the service card price span. */
+            font-weight: 400;
+        }
+        
+        /* What's New section styles. */
+        .whatsnew-section {
+            /* Add padding around the What's New section for spacing. */
+            padding: 3rem 2rem;
+            /* Use the pine color for the What's New section background. */
+            background-color: var(--pine);
+            /* Use the birch color for text in the What's New section. */
+            color: var(--birch);
+        }
+
+        /* What's New section heading styles. */
+        .whatsnew-section h2 {
+            /* Set the font size for the What's New section heading. */
+            font-size: 2rem;
+            /* Add space below the heading for separation from the content. */
+            margin-bottom: 2rem;
+            /* Center the What's New section heading. */
+            text-align: center;
+        }
+
+        /* What's New content container styles. */
+        .whatsnew-grid {
+            /* Use CSS Grid to create a layout for the news cards. */
+            display: grid;
+            /* Define a responsive grid layout that adapts to the available space. */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* Add space between the news cards. */
+            gap: 1.5rem;
+            /* Limit the maximum width and center on the page. */
+            max-width: 1200px;
+            /* Center the grid horizontally. */
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* What's New individual card styles. */
+        .whatsnew-card {
+            /* Use a semi-transparent border for the cards. */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            /* Add a border radius for rounded corners. */
+            border-radius: 6px;
+            /* Add padding around the content. */
+            padding: 1.5rem;
+            /* Add a transition effect for the transform property on hover. */
+            transition: transform 0.2s ease;
+        }
+
+        /* Hover effect for What's New cards. */
+        .whatsnew-card:hover {
+            /* Slightly lift the card on hover. */
+            transform: translateY(-3px);
+        }
+
+        /* What's New card date styles. */
+        .whatsnew-date {
+            /* Use the sunset color for the date. */
+            color: var(--sunset);
+            /* Set a smaller font size for the date. */
+            font-size: 0.8rem;
+            /* Set font weight to semi-bold. */
+            font-weight: 600;
+            /* Add space below the date. */
+            margin-bottom: 0.5rem;
+            /* Make the date uppercase for emphasis. */
+            text-transform: uppercase;
+            /* Add letter spacing for readability. */
+            letter-spacing: 0.05rem;
+        }
+
+        /* What's New card title styles. */
+        .whatsnew-card h3 {
+            /* Use the sand color for the card title. */
+            color: var(--sand);
+            /* Set the font size for the card title. */
+            font-size: 1.1rem;
+            /* Set the font weight for the card title. */
+            font-weight: 400;
+            /* Add space below the title. */
+            margin-bottom: 0.5rem;
+        }
+
+        /* What's New card description styles. */
+        .whatsnew-card p {
+            /* Set the font size for the card description. */
+            font-size: 0.85rem;
+            /* Set the font weight for the card description. */
+            font-weight: 300;
+            /* Set the line height for the card description. */
+            line-height: 1.7;
+            /* Use a slightly transparent birch color for the description. */
+            color: rgba(245, 241, 235, 0.85);
+            overflow-wrap: anywhere;
+        }
+
+        /* What's New card tag/badge styles. */
+        .whatsnew-tag {
+            /* Display as inline-block for proper spacing. */
+            display: inline-block;
+            /* Use a semi-transparent background. */
+            background-color: rgba(95, 168, 211, 0.2);
+            /* Use the sky color for the tag text. */
+            color: var(--sky);
+            /* Set a small font size. */
+            font-size: 0.7rem;
+            /* Set font weight to semi-bold. */
+            font-weight: 600;
+            /* Add padding around the tag text. */
+            padding: 0.2rem 0.6rem;
+            /* Add a border radius for rounded corners. */
+            border-radius: 3px;
+            /* Add space above the tag. */
+            margin-top: 0.8rem;
+            /* Make the tag uppercase. */
+            text-transform: uppercase;
+        }
+
+        /* Styles for the loading state of the gallery section. */
+        .loading {
+            /* Align the loading text to center of the gallery section. */
+            text-align: center;
+            /* Add padding around the loading text. */
+            padding: 2rem;
+            /* Use the sky color for the loading text. */
+            color: var(--sky);
+            /* Assign grid-column: 1 / -1 to the loading element. */
+            grid-column: 1 / -1;
+        }
+
+        /* Styles for the spinner animation that appears next to the loading text. */
+        .loading::after {
+            /* Use the content property to create a pseudo-element that will serve as the spinner. */
+            content: '';
+            /* Set the display to inline-block to allow the spinner to be positioned next to the loading text. */
+            display: inline-block;
+            /* Set a fixed width and height for the spinner to create a circular shape. */
+            width: 16px;
+            height: 16px;
+            /* Use a border-based approach to create the spinner, with a solid border that is mostly transparent except for one side. */
+            border: 2.5px solid rgba(95, 168, 211, 0.3);
+            /* Set the border-top-color to the sky color. */
+            border-top-color: var(--sky);
+            /* Add a border-radius of 50% to create a circular shape for the spinner. */
+            border-radius: 50%;
+            /* Use a keyframe animation to rotate the spinner indefinitely. */
+            animation: spin 0.8s linear infinite;
+            /* Add a left margin to create separation between the loading text and the spinner. */
+            margin-left: 0.5rem;
+            /* Vertically align the spinner to the middle of the loading text. */
+            vertical-align: middle;
+        }
+
+        /* Keyframe animation for the spinner. */
+        @keyframes spin {
+            /* Rotate the spinner from 0 degrees to 360 degrees. */
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Footer styles. */
+        .site-footer {
+            /* Assign the footer to the 'footer' grid area. */
+            grid-area: footer;
+            /* Use the pine color for the footer background. */
+            background-color: var(--pine);
+            /* Use the birch color for text in the footer. */
+            color: var(--birch);
+            /* Add padding around the footer content. */
+            padding: 1.5rem;
+            /* Add a border at the top of the footer. */
+            border-top: 3px solid var(--sunset);
+        }
+
+        /* Styles for the content within the footer. */
+        .footer-content {
+            /* Use flexbox to layout the content within the footer. */
+            display: flex;
+            /* Justify the content with space between. */
+            justify-content: space-between;
+            /* Vertically align the items in the footer to the center. */
+            align-items: center;
+            /* Limit the maximum width of the footer content. */
+            max-width: 1200px;
+            /* Set the margin to auto to center the footer content horizontally on the page. */
+            margin: 0 auto;
+            /* Allow the footer content to wrap to the next line on smaller screens. */
+            flex-wrap: wrap;
+            /* Add space between the elements in the footer content. */
+            gap: 1rem;
+            /* Use the birch color for the text in the footer content. */
+            color: var(--birch);
+        }
+
+        /* Styles for the paragraph text within the footer. */
+        .footer-content p {
+            /* Set a smaller font size for the footer text. */
+            font-size: 1rem;
+            /* Use the birch color for the footer text. */
+            color: var(--birch);
+        }
+
+        /* Styles for the navigation links within the footer. */
+        .footer-links {
+            /* Use flexbox to layout the navigation links within the footer. */
+            display: flex;
+            /* Remove default list styling from the footer links. */
+            list-style: none;
+            /* Add space between the footer links. */
+            gap: 1rem;
+            /* Use the birch color for the footer links. */
+            color: var(--birch);
+        }
+
+        /* Styles for the individual links within the footer. */
+        .footer-links a {
+            /* Set font size for the footer links. */
+            font-size: 1rem;
+            /* Add a transition effect for the hover effect on the footer links. */
+            transition: color;
+        }
+
+        /* Hover effect for the footer links. */
+        .footer-links a:hover {
+            /* Set the color to the sunset color on hover. */
+            color: var(--sunset);
+        }
+
+        /* Keep section content from causing horizontal scrolling on narrow viewports. */
+        .gallery-section,
+        .services-section,
+        .whatsnew-section,
+        .welcome-content {
+            max-width: 100%;
+            overflow-x: clip;
+        }
+
+        /* Media queries for tablet screens. */
+        @media (max-width: 992px) {
+
+            /* Display the hamburger menu on tablet screens. */
+            .hamburger {
+                /* Use flexbox to layout the hamburger menu. */
+                display: flex;
+            }
+
+            /* Hide the regular navigation links on tablet screens. */
+            .nav-links {
+                /* Set the display to none for the regular navigation links on tablet screens. */
+                display: none;
+                /* Use column flexbox layout for the navigation links when they are displayed in the mobile menu. */
+                flex-direction: column;
+                /* Position the navigation links absolutely to create a dropdown menu when the hamburger menu is toggled. */
+                position: absolute;
+                /* Position the navigation links below the header by setting top to 100%. */
+                top: 100%;
+                /* Set left and right to 0. */
+                left: 0;
+                right: 0;
+                /* Use the lake color for the background of the navigation links when displayed as a dropdown menu. */
+                background-color: var(--lake);
+                /* Add padding around the navigation links in the dropdown menu. */
+                padding: 1.5rem;
+                /* Add space between the navigation links in the dropdown menu. */
+                gap: 1rem;
+                /* Add a border at the top of the dropdown menu. */
+                border-top: 3px solid var(--sunset);
+            }
+
+            /* Display the navigation links as a dropdown menu when the hamburger menu is active. */
+            .nav-links.active {
+                /* Set the display to flex for the navigation links when the hamburger menu is active and showing the dropdown menu. */
+                display: flex;
+            }
+
+            /* Adjust the navigation container to use relative positioning. */
+            .nav-container {
+                /* Use relative positioning for the navigation container. */
+                position: relative;
+            }
+
+            /* Adjust the font size of the welcome heading on tablet screens. */
+            .welcome h1 {
+                /* Set the font size for the welcome heading to be smaller on tablet screens. */
+                font-size: 2rem;
+            }
+
+            .welcome-content {
+                padding: 6rem 1.5rem 4rem;
+            }
+
+            .welcome p {
+                font-size: 0.95rem;
+            }
+
+            /* Adjust the padding of the welcome screen content on tablet screens. */
+            .gallery-grid {
+                /* Adjust the gallery grid layout on tablet screens. */
+                grid-template-columns: 1fr;
+                /* Set the grid-template-rows to auto auto to allow the gallery items to stack vertically on tablet screens. */
+                grid-template-rows: auto auto;
+            }
+
+            /* Adjust the layout of the smaller grid of images on the left side of the gallery section on tablet screens. */
+            .gallery-small-grid {
+                /* Set one column for the smaller grid of images on the left side of the gallery section on tablet screens. */
+                grid-column: 1;
+                /* Set the grid-template-rows to auto to stack items vertically on tablet screens. */
+                grid-row: auto;
+            }
+
+            /* Adjust the layout of the larger featured image on the right side of the gallery section on tablet screens. */
+            .gallery-large {
+                /* Set the larger featured image to take up the full width of the gallery grid on tablet screens. */
+                grid-column: 1;
+                /* Set the grid-template-rows to auto to allow the larger featured image to take up the necessary height on tablet screens. */
+                grid-row: auto;
+            }
+
+            /* Adjust the height of the larger featured image on tablet screens. */
+            .gallery-large img {
+                /* Set a fixed height for the larger featured image on tablet screens. */
+                height: 300px;
+            }
+
+            /* Adjust the layout of the services grid on tablet screens. */
+            .services-grid {
+                /* Set the services grid to have 2 columns on tablet screens. */
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .whatsnew-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-section,
+            .services-section,
+            .whatsnew-section {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .service-card p,
+            .whatsnew-card p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Media queries for mobile screens. */
+        @media (max-width: 576px) {
+
+            .nav-container {
+                padding: 0.5rem 1rem;
+            }
+
+            .logo img {
+                height: 44px;
+            }
+
+            /* Adjust the font size of the welcome heading on mobile screens. */
+            .welcome h1 {
+                /* Set the font size for the welcome heading to be smaller on mobile screens. */
+                font-size: 1.9rem;
+                line-height: 1.25;
+            }
+
+            /* Adjust the padding of the welcome screen content on mobile screens. */
+            .welcome-content {
+                /* 5rem top padding, 1rem horizontal padding, and 3rem bottom padding. */
+                padding: 5rem 1rem 3rem;
+                max-width: 100%;
+            }
+
+            .welcome p {
+                font-size: 0.9rem;
+            }
+
+            /* Adjust the layout of the gallery grid on mobile screens. */
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto;
+            }
+
+            .gallery-small-grid {
+                /* One column for the smaller grid of images on the left side of the gallery section on mobile screens. */
+                grid-column: 1;
+                grid-row: auto;
+                grid-template-columns: 1fr;
+            }
+
+            /* Adjust the layout of the larger featured image on the right side of the gallery section on mobile screens. */
+            .gallery-large {
+                grid-column: 1;
+                grid-row: auto;
+            }
+
+            .gallery-large img {
+                /* Set a fixed height for the larger featured image on mobile screens. */
+                height: 220px;
+            }
+
+            /* Adjust the layout of the services grid on mobile screens. */
+            .services-grid {
+                /* Set the services grid to have 1 column on mobile screens to stack items vertically. */
+                grid-template-columns: 1fr;
+            }
+
+            .whatsnew-grid {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 1rem;
+            }
+
+            .whatsnew-card,
+            .service-card {
+                padding: 1.2rem;
+            }
+
+            .gallery-section,
+            .services-section,
+            .whatsnew-section {
+                padding: 2rem 1rem;
+            }
+
+            .services-section h2,
+            .whatsnew-section h2,
+            .gallery-section h2 {
+                font-size: 1.75rem;
+            }
+
+            /* Adjust the layout of the footer content on mobile screens. */
+            .footer-content {
+                /* Stack the elements in the footer content vertically on mobile screens. */
+                flex-direction: column;
+                /* Center the elements in the footer content on mobile screens. */
+                align-items: center;
+                /* Center the text in the footer content. */
+                text-align: center;
+            }
+
+            /* Adjust the layout of the footer links on mobile screens. */
+            .footer-links {
+                /* Allow the footer links to wrap to the next line on mobile screens. */
+                flex-wrap: wrap;
+                /* Center the footer links on mobile screens. */
+                justify-content: center;
+            }
+        }
+
+        /* Desktop: keep welcome content condensed to the left */
+        @media (min-width: 1200px) {
+            .welcome-content {
+                max-width: 720px;
+                margin-left: 3rem;
+                padding-left: 2rem;
+            }
+        }
+
+        /* End of CSS styles for the website. */
+    </style>
+</head>
+
+<!-- Start of body of HTML document. -->
+<body>
+    <!-- Main page grid container. -->
+    <div class="page-grid">
+        <!-- Site header with navigation. -->
+        <header class="site-header">
+            <!-- Nav element wraps the navigation for semantic HTML. -->
+            <nav class="nav-container">
+                <!-- Logo linking back to the homepage, using an image with alt text for accessibility. -->
+                <a href="#welcome" class="logo">
+                    <!-- Image comes from GitHub repo. -->
+                    <img src="/assets/logos_and_thumbnails/logo-137x139.png"
+                        alt="Papi's Pictures Logo">
+                </a>
+                <!-- Hamburger menu for mobile navigation, using a button element with appropriate ARIA attributes for accessibility. -->
+                <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Toggle menu">
+                    <!-- Three spans make the lines for the hamburger icon. -->
+                    <span></span><span></span><span></span>
+                </div>
+                <!-- Unordered list of navigation links using anchor links for single-page navigation. -->
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#welcome">Home</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#whatsnew">What's New</a></li>
+                    <li><a href="#services">Services &amp; Licensing</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Main content area wrapping all page sections for semantic HTML. -->
+        <main class="site-main">
+
+            <!-- Welcome section with a background image, overlay, and welcome message. -->
+            <section class="welcome" id="welcome">
+                <div class="welcome-bg">
+                    <!-- Background image for the welcome section, using an image with alt text for accessibility. Image comes from GitHub repo. -->
+                    <img src="https://github.com/bcshort1/papispictures.github.io/blob/main/assets/images/Point%20Betsie%20Sunny%20Day_DJI_20250905150029_0444_D-HDR_photos_db_sized_photo_32.png?raw=true"
+                        alt="Point Betsie">
+                </div>
+                <!-- Overlay to darken the background image and make the welcome message more readable. -->
+                <div class="welcome-overlay"></div>
+                <!-- Welcome message content, including a heading, description, and call-to-action. -->
+                <div class="welcome-content">
+                    <h1>Welcome to Papi's Pictures</h1>
+                    <p>Capturing the beauty of Northern Michigan from the sky and shore. From the sandy dunes of Sleeping Bear to the rugged coastline of Point Betsie, Papi's Pictures brings you stunning aerial and landscape photography of the Great Lakes region. Whether you're looking to license an image for your home, your business, or your next creative project, we've got you covered.</p>
+                    <a href="#gallery" class="welcome-cta">Explore the Gallery</a>
+                </div>
+            </section>
+
+            <!-- Gallery section with a heading and a grid layout for displaying recent pictures. -->
+            <section class="gallery-section" id="gallery">
+                <!-- Heading for the gallery section. -->
+                <h2>Recent Pictures</h2>
+                <!-- Gallery grid layout for displaying recent pictures, dynamically loaded from the API. -->
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Loading state displayed while gallery images are being fetched from the API. -->
+                    <p class="loading" style="grid-column:1/-1;">Loading gallery...</p>
+                </div>
+            </section>
+
+            <!-- What's New section with updates about the website and business. -->
+            <section class="whatsnew-section" id="whatsnew">
+                <h2>What's New</h2>
+                <div class="whatsnew-grid" id="whatsNewGrid">
+                    <div class="loading">Loading updates...</div>
+                </div>
+            </section>
+
+            <!-- About section with photographer bio and contact info. -->
+            <section class="services-section" id="about">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h2 style="font-size: 2rem; text-align: center; margin-bottom: 1.5rem;">About Papi's Pictures</h2>
+                    <p style="font-size: 1rem; font-weight: 300; line-height: 1.8; margin-bottom: 1rem;">Papi's Pictures is a Northern Michigan photography project capturing the natural beauty of the Great Lakes region through aerial drone and landscape photography. From the iconic Point Betsie Lighthouse to the hidden marshes of Arcadia, every image tells a story of Michigan's breathtaking coastline, dense pine forests, and golden sunsets over Lake Michigan.</p>
+                    <p style="font-size: 1rem; font-weight: 300; line-height: 1.8; margin-bottom: 1rem;">Our mission is simple: share the beauty of Northern Michigan with the world. Whether you're a local who wants a piece of home on your wall, a business looking for stunning regional imagery, or a creative professional seeking unique content, Papi's Pictures has something for you. All images are available for personal and commercial licensing.</p>
+                    <p style="font-size: 1rem; font-weight: 300; line-height: 1.8;">Have a question or want to book a custom photo shoot? Get in touch at <strong style="color: var(--sunset);">contact@papispictures.com</strong></p>
+                </div>
+            </section>
+
+            <!-- Service section with a heading and a grid layout for displaying services and licensing options. -->
+            <section class="services-section" id="services">
+                <!-- Heading for Services and Licensing section. -->
+                <h2>Services &amp; Licensing</h2>
+                <!-- Services grid layout for displaying services and licensing options, with a loading state while the services are being fetched from the API. -->
+                <div class="services-grid" id="servicesGrid">
+                    <!-- Loading state for the services grid, displayed while the services are being fetched from the API. -->
+                    <div class="loading">Loading services...</div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer section with copyright information and navigation links. -->
+        <footer class="site-footer">
+            <!-- Footer content, including copyright information and navigation links. -->
+            <div class="footer-content">
+                <p>&copy; Copyright 2025 Papi's Pictures - All Rights Reserved</p>
+                <!-- Unordered list of navigation links in the footer. -->
+                <ul class="footer-links">
+                    <li><a href="https://www.instagram.com/papis_pictures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">Instagram</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=61586298303041">Facebook</a></li>
+                </ul>
+            </div>
+        </footer>
+
+    </div>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Hamburger menu functionality.
+
+        // Get the hamburger menu and navigation links elements by their IDs.
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        // Add a click event listener to the hamburger menu to toggle the active class on both the hamburger menu and the navigation links.
+        hamburger.addEventListener('click', function () {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close the mobile menu when a navigation link is clicked.
+        navLinks.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Add a keydown event listener to close the dropdown menu by pressing Escape.
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Gallery section - fetch recent pictures from the API and populate the gallery grid.
+
+        // Get the gallery grid element by its ID.
+        const galleryGrid = document.getElementById('galleryGrid');
+
+        // Declare an asynchronous function to fetch recent pictures from the API.
+        async function fetchGallery() {
+            try {
+                const res = await fetch('/api/recentPictures');
+                if (!res.ok) throw new Error('Fetch failed');
+                const pictures = await res.json();
+
+                if (!Array.isArray(pictures) || pictures.length === 0) {
+                    galleryGrid.innerHTML = '<p class="loading" style="grid-column:1/-1;">No pictures available right now.</p>';
+                    return;
+                }
+
+                // Separate featured and non-featured images.
+                const smallPictures = pictures.filter(function (p) { return !p.featured; });
+                const featuredPicture = pictures.find(function (p) { return p.featured; });
+
+                // Build the gallery HTML.
+                galleryGrid.innerHTML = '';
+
+                // Create the smaller grid of images on the left side.
+                const smallGrid = document.createElement('div');
+                smallGrid.className = 'gallery-small-grid';
+                smallPictures.forEach(function (pic) {
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item';
+                    item.innerHTML = '<img src="/media/' + encodeURIComponent(pic.fileName) + '" alt="' + pic.alt + '">';
+                    smallGrid.appendChild(item);
+                });
+                galleryGrid.appendChild(smallGrid);
+
+                // Create the larger featured image on the right side.
+                if (featuredPicture) {
+                    const largeItem = document.createElement('div');
+                    largeItem.className = 'gallery-large gallery-item';
+                    largeItem.innerHTML = '<img src="/media/' + encodeURIComponent(featuredPicture.fileName) + '" alt="' + featuredPicture.alt + '">';
+                    galleryGrid.appendChild(largeItem);
+                }
+            } catch (err) {
+                console.error(err);
+                galleryGrid.innerHTML = '<p class="loading" style="grid-column:1/-1;">Unable to load gallery.</p>';
+            }
+        }
+
+        // Call the fetchGallery function to load the gallery when the page loads.
+        fetchGallery();
+
+        // Services section - fetch data from the API and populate the services grid.
+
+        // Get the services grid element by its ID.
+        const servicesGrid = document.getElementById('servicesGrid');
+        // Get the What's New grid element by its ID.
+        const whatsNewGrid = document.getElementById('whatsNewGrid');
+
+        // Declare an asynchronous function to fetch the services data from the Node.js API endpoint.
+        async function fetchServices() {
+            try {
+                // Fetch the services data from the /api endpoint served by our Express server.
+                const res = await fetch('/api');
+
+                // If response is not ok, throw an error to be caught in the catch block.
+                if (!res.ok) throw new Error('Fetch failed');
+
+                // Parse the JSON data from the response.
+                const data = await res.json();
+                const serviceItems = Array.isArray(data.photoVideoServices) ? data.photoVideoServices : [];
+                const whatsNewItems = Array.isArray(data.whatsNewItems) ? data.whatsNewItems : [];
+                // Clear the services grid before populating it with new service cards.
+                servicesGrid.innerHTML = '';
+                // Clear the What's New grid before populating it with update cards.
+                whatsNewGrid.innerHTML = '';
+
+                if (serviceItems.length === 0) {
+                    servicesGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;opacity:0.5;">No services available right now.</p>';
+                }
+
+                if (whatsNewItems.length === 0) {
+                    whatsNewGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;opacity:0.5;">No updates posted yet.</p>';
+                }
+
+                // Iterate over the photoVideoServices array in the fetched data and create a service card for each service.
+                serviceItems.forEach(function (svc) {
+                    // Create a new div element for each service card.
+                    const card = document.createElement('div');
+                    // Set the class name of the card to 'service-card'.
+                    card.className = 'service-card';
+                    // Set the inner HTML of the card to include the service name, description, and price.
+                    card.innerHTML = `
+                        <h3>${svc.serviceName}</h3>
+                        <p>${svc.serviceDescription}</p>
+                        <div class="service-price">$${svc.price.toLocaleString()} <span>/ each</span></div>
+                    `;
+                    servicesGrid.appendChild(card);
+                });
+
+                // Iterate over the whatsNewItems array and create an update card for each item.
+                whatsNewItems.forEach(function (item) {
+                    const card = document.createElement('div');
+                    card.className = 'whatsnew-card';
+                    card.innerHTML = `
+                        <div class="whatsnew-date">${item.date}</div>
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                        <span class="whatsnew-tag">${item.tag}</span>
+                    `;
+                    whatsNewGrid.appendChild(card);
+                });
+            } catch (err) {
+                console.error(err);
+                servicesGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;opacity:0.5;">Unable to load services.</p>';
+                whatsNewGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;opacity:0.5;">Unable to load updates.</p>';
+            }
+        }
+        // Call the fetchServices function to load the services when the page loads.
+        fetchServices();
+    </script>
+
+</body>
+
+</html>
