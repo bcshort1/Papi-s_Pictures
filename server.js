@@ -3,7 +3,7 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-const db = require ('./db.json');
+const db = require('./db.json');
 
 const staticOptions = {
     dotfiles: 'deny',
@@ -15,6 +15,8 @@ const staticOptions = {
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
+
+app.use(express.static(path.join(__dirname, 'public'), staticOptions));
 
 app.use(
     '/assets/logos_and_thumbnails',
