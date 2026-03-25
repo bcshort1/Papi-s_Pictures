@@ -12,26 +12,18 @@
     <link rel="stylesheet" href="/index.css">
 </head>
 
-<!-- Start of body of HTML document. -->
-
 <body>
-    <!-- Main page grid container. -->
     <div class="page-grid">
+
         <!-- Site header with navigation. -->
         <header class="site-header">
-            <!-- Nav element wraps the navigation for semantic HTML. -->
             <nav class="nav-container">
-                <!-- Logo linking back to the homepage, using an image with alt text for accessibility. -->
                 <a href="#welcome" class="logo">
-                    <!-- Image comes from GitHub repo. -->
                     <img src="/assets/logos_and_thumbnails/logo-137x139.png" alt="Papi's Pictures Logo">
                 </a>
-                <!-- Hamburger menu for mobile navigation, using a button element with appropriate ARIA attributes for accessibility. -->
                 <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Toggle menu">
-                    <!-- Three spans make the lines for the hamburger icon. -->
                     <span></span><span></span><span></span>
                 </div>
-                <!-- Unordered list of navigation links using anchor links for single-page navigation. -->
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#welcome">Home</a></li>
                     <li><a href="#gallery">Gallery</a></li>
@@ -42,20 +34,16 @@
             </nav>
         </header>
 
-        <!-- Main content area wrapping all page sections for semantic HTML. -->
         <main class="site-main">
 
-            <!-- Welcome section with a background video, overlay, and welcome message. -->
+            <!-- Welcome section with background video and hero message. -->
             <section class="welcome" id="welcome">
                 <div class="welcome-bg">
-                    <!-- Background video for the welcome section, muted and looping for a smooth hero experience. -->
                     <video width="1920" height="1080" autoplay muted loop playsinline preload="auto" poster="/assets/welcome_section_video/PointBetsieDawn_poster.jpg" aria-hidden="true">
                         <source src="/assets/welcome_section_video/PointBetsieDawn_hero.mp4" type="video/mp4">
                     </video>
                 </div>
-                <!-- Overlay to darken the background video and make the welcome message more readable. -->
                 <div class="welcome-overlay"></div>
-                <!-- Welcome message content, including a heading, description, and call-to-action. -->
                 <div class="welcome-content">
                     <h1>Welcome to Papi's Pictures</h1>
                     <p>Capturing the beauty of Northern Michigan from the sky and shore. From the sandy dunes of
@@ -66,18 +54,15 @@
                 </div>
             </section>
 
-            <!-- Gallery section with a heading and a grid layout for displaying recent pictures. -->
+            <!-- Gallery section. -->
             <section class="gallery-section" id="gallery">
-                <!-- Heading for the gallery section. -->
                 <h2>Recent Pictures</h2>
-                <!-- Gallery grid layout for displaying recent pictures, dynamically loaded from the API. -->
                 <div class="gallery-grid" id="galleryGrid">
-                    <!-- Loading state displayed while gallery images are being fetched from the API. -->
                     <p class="loading" style="grid-column:1/-1;">Loading gallery...</p>
                 </div>
             </section>
 
-            <!-- What's New section with updates about the website and business. -->
+            <!-- What's New section. -->
             <section class="whatsnew-section" id="whatsnew">
                 <h2>What's New</h2>
                 <div class="whatsnew-grid" id="whatsNewGrid">
@@ -85,58 +70,47 @@
                 </div>
             </section>
 
-            <!-- About section with photographer bio and contact info. -->
-            <section class="services-section" id="about">
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <h2 style="font-size: 2rem; text-align: center; margin-bottom: 1.5rem;">About Papi's Pictures</h2>
-                    <p style="font-size: 1rem; font-weight: 300; line-height: 1.8; margin-bottom: 1rem;">Papi's Pictures
-                        is a Northern Michigan photography project capturing the natural beauty of the Great Lakes
-                        region through aerial drone and landscape photography. From the iconic Point Betsie Lighthouse
-                        to the hidden marshes of Arcadia, every image tells a story of Michigan's breathtaking
-                        coastline, dense pine forests, and golden sunsets over Lake Michigan.</p>
-                    <p style="font-size: 1rem; font-weight: 300; line-height: 1.8; margin-bottom: 1rem;">Our mission is
-                        simple: share the beauty of Northern Michigan with the world. Whether you're a local who wants a
-                        piece of home on your wall, a business looking for stunning regional imagery, or a creative
-                        professional seeking unique content, Papi's Pictures has something for you. All images are
-                        available for personal and commercial licensing.</p>
-                    <p style="font-size: 1rem; font-weight: 300; line-height: 1.8;">Have a question or want to book a
-                        custom photo shoot? Get in touch at <strong
-                            style="color: var(--sunset);">contact@papispictures.com</strong></p>
+            <!-- About section. -->
+            <section class="about-section" id="about">
+                <div class="about-content">
+                    <h2>About Papi's Pictures</h2>
+                    <p>Papi's Pictures is a Northern Michigan photography project capturing the natural beauty of the
+                        Great Lakes region through aerial drone and landscape photography. From the iconic Point Betsie
+                        Lighthouse to the hidden marshes of Arcadia, every image tells a story of Michigan's
+                        breathtaking coastline, dense pine forests, and golden sunsets over Lake Michigan.</p>
+                    <p>Our mission is simple: share the beauty of Northern Michigan with the world. Whether you're a
+                        local who wants a piece of home on your wall, a business looking for stunning regional imagery,
+                        or a creative professional seeking unique content, Papi's Pictures has something for you. All
+                        images are available for personal and commercial licensing.</p>
+                    <p>Have a question or want to book a custom photo shoot? Get in touch at
+                        <strong class="about-email">contact@papispictures.com</strong>
+                    </p>
                 </div>
             </section>
 
-            <!-- Service section with a heading and a grid layout for displaying services and licensing options. -->
+            <!-- Services & Licensing section. -->
             <section class="services-section" id="services">
-                <!-- Heading for Services and Licensing section. -->
                 <h2>Services &amp; Licensing</h2>
-                <!-- Services grid layout for displaying services and licensing options, with a loading state while the services are being fetched from the API. -->
                 <div class="services-grid" id="servicesGrid">
-                    <!-- Loading state for the services grid, displayed while the services are being fetched from the API. -->
                     <div class="loading">Loading services...</div>
                 </div>
             </section>
 
         </main>
 
-        <!-- Footer section with copyright information and navigation links. -->
+        <!-- Footer. -->
         <footer class="site-footer">
-            <!-- Footer content, including copyright information and navigation links. -->
             <div class="footer-content">
                 <p>&copy; Copyright 2025 Papi's Pictures - All Rights Reserved</p>
-                <!-- Unordered list of navigation links in the footer. -->
                 <ul class="footer-links">
-                    <li><a
-                            href="https://www.instagram.com/papis_pictures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">Instagram</a>
-                    </li>
+                    <li><a href="https://www.instagram.com/papis_pictures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">Instagram</a></li>
                     <li><a href="https://www.facebook.com/profile.php?id=61586298303041">Facebook</a></li>
                 </ul>
             </div>
         </footer>
 
     </div>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="/index.js" defer></script>
-
 </body>
 
 </html>

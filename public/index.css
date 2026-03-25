@@ -1,228 +1,149 @@
-/* Reset some default styles for all elements. */
 *,
 *::before,
 *::after {
-    /* Remove default margin from all elements. */
     margin: 0;
-    /* Remove default padding from all elements. */
     padding: 0;
-    /* Use border-box for box-sizing to include padding and border in the element's total width and height. */
     box-sizing: border-box;
 }
 
-/* Color palette inspired by the Northern Michigan landscape. I want this website to scream Michigan. My family is really about that "Lake Life". */
+/* Color palette inspired by the Northern Michigan landscape — lakes, sky, sand, sunsets, and pine forests. */
 :root {
-    /* Define a deeper blue color to represent the lakes of the "Great Lakes State". */
     --lake: #1B4965;
-    /* Define a lighter blue color to represent the sky. */
     --sky: #5FA8D3;
-    /* Define a warm sand color to represent the beaches and dunes along the Michigan coastline. */
     --sand: #E8DCC4;
-    /* Define a warm sunset color. Our goal is to catch every sunset we can. */
     --sunset: #D4923A;
-    /* Define a deep green to represent the pine forest. Michigan's State tree is the Eastern White Pine. */
     --pine: #2D4A3E;
-    /* Define a light color to represent the dense birch forests. */
     --birch: #F5F1EB;
-    /* Define a dark color for text and other elements to ensure good contrast against the lighter background colors. */
     --dark: #1a1a1a;
-    /* Define a white color for text and other elements that need to stand out against darker backgrounds. */
     --white: #ffffff;
 }
 
-/* Activate smooth scrolling for the entire document. */
 html {
     scroll-behavior: smooth;
-    width: 100%;
-    overflow-x: hidden;
 }
 
-/* Global styles. */
 body {
-    /* Font family for the entire website, using Raleway. */
     font-family: 'Raleway', sans-serif;
-    /* Use the dark color for text to ensure good contrast against the lighter background colors. */
     color: var(--dark);
-    /* Use the birch color for the background. */
     background-color: var(--birch);
-    /* Set line height for better readability. */
     line-height: 1.6;
     width: 100%;
     overflow-x: hidden;
 }
 
-/* Heading styles. */
 h1,
 h2,
 h3 {
-    /* Use the Libre Baskerville font for headings. */
     font-family: 'Libre Baskerville', serif;
 }
 
-/* Link styles. */
 a {
-    /* Remove default text decoration. */
     text-decoration: none;
-    /* Inherit the color from the parent element to ensure links match the surrounding text color. */
     color: inherit;
 }
 
-/* Image styles. */
 img {
-    /* Ensure images are responsive and scale appropriately within their containers while maintaining their aspect ratio. */
     max-width: 100%;
-    /* Set display to block to remove any unwanted space below images. */
     display: block;
 }
 
-/* Grid layout for the main sections. */
+/* Page grid layout. */
 .page-grid {
-    /* Define a grid layout with named areas for header, main content, and footer. */
     display: grid;
-    /* Single column layout with auto rows for each section. */
     grid-template-columns: 1fr;
-    /* Define rows for each section with auto height. */
     grid-template-rows: auto auto auto;
-    /* Assign named grid areas. */
     grid-template-areas:
         "header"
         "main"
         "footer";
-    /* Ensure the grid takes up at least the full viewport height. */
     min-height: 100vh;
 }
 
-/* Header styles. */
+/* Header. */
 .site-header {
-    /* Assign the header to the 'header' grid area. */
     grid-area: header;
-    /* Use the lake color for the header background. */
     background-color: var(--lake);
-    /* Make the header sticky so it remains visible at the top of the viewport when scrolling. */
     position: sticky;
-    /* Stick to the top of the viewport. */
     top: 0;
-    /* Use z-index to ensure the header stays above other content and does not slip behind other elements. */
     z-index: 1000;
-    /* Add a header border. */
     border-bottom: 3px solid var(--sunset);
 }
 
-/* Navigation container styles. */
 .nav-container {
-    /* Use flexbox to layout navigation links within the header. */
     display: flex;
-    /* Space out the navigation links. */
     justify-content: space-between;
-    /* Center the items vertically. */
     align-items: center;
-    /* Limit the maximum width of the navigation container. */
     max-width: 1200px;
-    /* Using margin auto to center the navigation container horizontally. */
     margin: 0 auto;
-    /* Add padding for spacing around the links. */
     padding: 0.5rem 1.5rem;
 }
 
-/* Logo styles for the header. */
 .logo {
-    /* Use flexbox to align the logo image and text. */
     display: flex;
-    /* Vertically center the logo. */
     align-items: center;
 }
 
-/* Logo image styles with a circular shape and border. */
 .logo img {
-    /* Set a fixed height for the logo image. This value maintains the aspect ratio of the logo image. */
     height: 50px;
-    /* Set the border radius to 50% to make the border circular. */
     border-radius: 50%;
-    /* Add a border around the logo image. Same color and width as the header border. */
     border: 3px solid var(--sunset);
 }
 
-/* Navigation link styles for the header. */
 .nav-links {
-    /* Use flexbox to layout the navigation links horizontally. */
     display: flex;
-    /* Remove default list styling. */
     list-style: none;
-    /* Add space between each navigation link. */
     gap: 1.2rem;
-    /* Vertically center the navigation links. */
     align-items: center;
 }
 
-/* Navigation link styles for active states. */
 .nav-links a {
-    /* Use the sand color for navigation links. */
     color: var(--sand);
-    /* Make the navigation links bold for better visibility. */
     font-weight: bold;
-    /* Set a smaller font size for the navigation links. */
     font-size: 0.82rem;
-    /* Add a transition effect for color changes on hover. */
-    transition: color;
+    transition: color 0.3s ease;
 }
 
-/* Hover color change for navigation links. */
 .nav-links a:hover {
-    /* Set color to the sunset color on hover. */
     color: var(--sunset);
 }
 
-/* Hamburger menu styles for mobile screens. */
+/* Hamburger menu for mobile. */
 .hamburger {
-    /* Initially hide the hamburger menu on larger screens. */
     display: none;
-    /* Use flex direction column to layout the hamburger lines vertically. */
     flex-direction: column;
-    /* Change the cursor to a pointer to indicate it's clickable. */
     cursor: pointer;
-    /* Add space between the hamburger lines. */
     gap: 5px;
 }
 
-/* Hamburger line styles with a background color and rounded edges. */
 .hamburger span {
-    /* Set a fixed width and height for the hamburger lines. */
     width: 25px;
     height: 3px;
-    /* Use the sunset color for the hamburger lines. */
     background-color: var(--sunset);
-    /* Add a border radius to the hamburger lines for rounded edges. */
     border-radius: 3px;
 }
 
-/* Transform the hamburger lines into an 'X' when activated. */
+/* Transform hamburger into an X when active. */
 .hamburger.active span:nth-child(1) {
-    /* Rotate the first line 45 degrees and move it down to create the top part of the 'X'. */
     transform: rotate(45deg) translate(5px, 6px);
 }
 
-/* Hide the middle line of the hamburger menu when active to create a cleaner 'X' shape. */
 .hamburger.active span:nth-child(2) {
-    /* Set the opacity to 0 to hide the middle line when the hamburger menu is active. */
     visibility: hidden;
 }
 
-/* Rotate the third line -45 degrees and move it up to create the bottom part of the 'X'. */
 .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -6px);
 }
 
-/* Main content area styles. */
+/* Main content. */
 .site-main {
-    /* Assign the main content to the 'main' grid area. */
     grid-area: main;
     width: 100%;
     overflow-x: clip;
 }
 
-/* Welcome section styles. */
+/* Welcome section. */
 .welcome {
-    
     position: relative;
     width: 100%;
     background: #000;
@@ -234,70 +155,53 @@ img {
 .welcome-bg {
     display: block;
     width: 100%;
-    /* Remove any line-height space below the video. */
     font-size: 0;
     line-height: 0;
 }
 
-/* Welcome background media styles. */
 .welcome-bg img,
 .welcome-bg video {
-    /* Fill the width; the HTML width/height attributes tell the browser the aspect ratio. */
-    width: auto;
-    max-width: 100%;
+    width: 100%;
     height: auto;
+    max-height: 80vh;
+    object-fit: fill;
+    /*width: 100%;
+    height: auto;*/
 }
 
-/* Overlay styles to darken the background video for better text contrast. */
 .welcome-overlay {
-    /* Use absolute positioning to place the overlay on top of the background video. */
     position: absolute;
-    /* Use inset to cover the entire section area. */
     inset: 0;
-    /* Use a semi-transparent black background to create a darkening effect over the background video. */
     background: rgba(0, 0, 0, 0.25);
-    /* Ensure overlay sits above the video. */
     z-index: 1;
 }
 
-/* Welcome content styles — positioned on top of the video and overlay. */
+/* Welcome content — positioned on top of the video and overlay. */
 .welcome-content {
-    /* Use absolute positioning to overlay the text on the video. */
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    /* Set a higher z-index to ensure the welcome content is above the overlay. */
     z-index: 2;
-    /* Limit the maximum width of the welcome content. */
     max-width: 800px;
-    /* Add padding around the welcome content for spacing. */
     padding: 8rem 2rem 5rem;
-    /* Use flexbox to layout. */
     display: flex;
-    /* Stack the heading and paragraph vertically. */
     flex-direction: column;
-    /* Add space between the heading and paragraph for better readability. */
     gap: 0.8rem;
-    /* Prevent content from spilling out of the section. */
     overflow: hidden;
 }
 
-/* Welcome heading styles. */
 .welcome h1 {
     font-size: 3rem;
     line-height: 1.2;
 }
 
-/* Welcome paragraph styles. */
 .welcome p {
     font-size: 1rem;
     font-weight: 300;
-    opacity: 1;
 }
 
-/* Welcome call-to-action button styles. */
 .welcome-cta {
     display: inline-block;
     margin-top: 1rem;
@@ -312,492 +216,332 @@ img {
     width: fit-content;
 }
 
-/* Hover effect for the welcome call-to-action button. */
 .welcome-cta:hover {
     background-color: #b87a2e;
 }
 
-/* Gallery section styles. */
+/* Gallery section. */
 .gallery-section {
-    /* Add padding around the gallery section for spacing. */
     padding: 3rem 2rem;
 }
 
-/* Gallery section heading styles. */
 .gallery-section h2 {
     font-size: 2rem;
-    /* Use the lake color for the gallery section heading. */
     color: var(--lake);
-    /* Add space below the heading for separation from the gallery grid. */
     margin-bottom: 2rem;
-    /* Center the gallery section heading. */
     text-align: center;
 }
 
-/* Gallery grid styles for a 4-column layout with a larger featured image and smaller images on the left. */
 .gallery-grid {
-    /* Use CSS Grid to create a layout for the gallery images. */
     display: grid;
-    /* Define a 4-column grid layout for the gallery section. */
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    /* Define two rows for the gallery grid, allowing for a larger featured image and smaller images on the left. */
     grid-template-rows: auto auto;
-    /* Add space between the gallery items. */
     gap: 1rem;
-    /* Limit the maximum width of the gallery grid and center it on the page. */
     max-width: 1200px;
-    /* Center the gallery grid horizontally. */
     margin: 0 auto;
     width: 100%;
 }
 
-/* Styles for the smaller grid of images on the left side of the gallery section. */
 .gallery-small-grid {
-    /* Position the smaller grid to take up the first two columns and both rows of the gallery grid. */
     grid-column: 1 / 3;
-    /* Position the smaller grid to take up both rows of the gallery grid. */
     grid-row: 1 / 3;
-    /* Use CSS Grid to layout the smaller images in a 2x2 grid within the left side of the gallery section. */
     display: grid;
-    /* Define a 2-column grid layout for the smaller images on the left side of the gallery section. */
     grid-template-columns: 1fr 1fr;
-    /* Define two rows for the smaller images on the left side of the gallery section. */
     grid-template-rows: 1fr 1fr;
-    /* Add space between the smaller gallery items for better visual separation. */
     gap: 1rem;
 }
 
-/* Styles for the larger featured image on the right side of the gallery section. */
 .gallery-large {
-    /* Position the larger featured image to take up the last two columns and both rows of the gallery grid. */
     grid-column: 3 / 5;
-    /* Position the larger featured image to take up both rows of the gallery grid. */
     grid-row: 1 / 3;
 }
 
-/* Styles for individual gallery items. */
 .gallery-item {
-    /* Add a border radius to the gallery items for rounded corners. */
     border-radius: 6px;
-    /* Hide any overflow content to maintain the rounded corners and prevent scrollbars from appearing. */
     overflow: hidden;
-    /* Add a transition effect for the transform property. */
-    transition: transform;
+    transition: transform 0.3s ease;
 }
 
-/* Hover effect for gallery items to slightly scale up the image. */
 .gallery-item:hover {
-    /* Scale up the gallery item slightly on hover to create a subtle zoom effect. */
     transform: scale(1.02);
 }
 
-/* Styles for images within gallery items. */
 .gallery-item img {
-    /* Ensure the image covers the entire gallery item area. */
     width: 100%;
     height: 100%;
-    /* Use object-fit to cover the area, cropping if necessary. */
     object-fit: cover;
 }
 
-/* Services section styles. */
+/* Services section. */
 .services-section {
-    /* Add padding around the services section for spacing. */
     padding: 3rem 2rem;
-    /* Use the lake color for the services section background. */
     background-color: var(--lake);
-    /* Use the birch color for text in the services section. */
     color: var(--birch);
 }
 
-/* Services section heading styles with a specific color and spacing. */
 .services-section h2 {
-    /* Set the font size for the services section heading. */
     font-size: 2rem;
-    /* Set the margin below the services section heading. */
     margin-bottom: 2rem;
-    /* Align the services section heading to center. */
     text-align: center;
 }
 
-/* Services grid styles. */
 .services-grid {
-    /* Use CSS Grid to create a layout for the service cards in the services section. */
     display: grid;
-    /* Define a 4-column grid layout for the service cards in the services section. */
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    /* Add space between the service cards in the services grid. */
     gap: 1rem;
-    /* Limit the maximum width of the services grid and center it on the page. */
     max-width: 1200px;
-    /* Set the margin to auto to center the services grid horizontally on the page. */
     margin: 0 auto;
     width: 100%;
 }
 
-/* Styles for individual service cards. */
 .service-card {
-    /* Use a semi-transparent border for the service cards. */
     border: 1px solid rgba(255, 255, 255, 0.1);
-    /* Add a border radius to the service cards for rounded corners. */
     border-radius: 6px;
-    /* Add padding around the content of the service cards. */
     padding: 1rem;
-    /* Use flexbox to layout the service cards. */
     display: flex;
-    /* Stack the content of the service cards vertically. */
     flex-direction: column;
-    /* Add space between the elements within the service cards. */
     gap: 0.5rem;
-    /* Add a transition effect for the transform property on hover. */
-    transition: transform;
+    transition: transform 0.3s ease;
 }
 
-/* Hover effect for service cards to slightly lift the card. */
 .service-card:hover {
-    /* Scale up the service card slightly on hover. */
     transform: translateY(-3px);
 }
 
-/* Styles for the service card title. */
 .service-card h3 {
-    /* Set the font size for the service card title. */
     font-size: 1rem;
-    /* Use the sand color for the service card title. */
     color: var(--sand);
-    /* Set the font weight for the service card title. */
     font-weight: 400;
 }
 
-/* Styles for the service card description. */
 .service-card p {
-    /* Set the font size for the service card description. */
     font-size: 0.8rem;
-    /* Use the birch color for the service card description. */
     color: var(--birch);
-    /* Set the font weight for the service card description. */
     font-weight: 300;
-    /* Use flex 1 to allow the service card description to take up any remaining vertical space within the service card. */
     flex: 1;
 }
 
-/* Styles for the service card price. */
 .service-price {
-    /* Use the Libre Baskerville font for the service card price. */
     font-family: 'Libre Baskerville', serif;
-    /* Set the font size for the service card price. */
     font-size: 1.2rem;
-    /* Set the font weight for the service card price. */
     font-weight: 700;
-    /* Use the sunset color for the service card price. */
     color: var(--sunset);
-    /* Align the service card price to the center. */
     text-align: center;
-    /* Use margin-top: auto to push the service card price to the bottom of the service card. */
     margin-top: auto;
-    /* Add padding to the top of the service card price. */
     padding-top: 1rem;
 }
 
-/* Styles for the service card price span. */
 .service-price span {
-    /* Set the font size for the service card price span. */
     font-size: 1rem;
-    /* Use Raleway for the service card price span. */
     font-family: 'Raleway', sans-serif;
-    /* Use a semi-transparent white color for the service card price span. */
     color: rgba(245, 241, 235, 0.4);
-    /* Set the font weight for the service card price span. */
     font-weight: 400;
 }
 
-/* What's New section styles. */
+/* What's New section. */
 .whatsnew-section {
-    /* Add padding around the What's New section for spacing. */
     padding: 3rem 2rem;
-    /* Use the pine color for the What's New section background. */
     background-color: var(--pine);
-    /* Use the birch color for text in the What's New section. */
     color: var(--birch);
 }
 
-/* What's New section heading styles. */
 .whatsnew-section h2 {
-    /* Set the font size for the What's New section heading. */
     font-size: 2rem;
-    /* Add space below the heading for separation from the content. */
     margin-bottom: 2rem;
-    /* Center the What's New section heading. */
     text-align: center;
 }
 
-/* What's New content container styles. */
 .whatsnew-grid {
-    /* Use CSS Grid to create a layout for the news cards. */
     display: grid;
-    /* Define a responsive grid layout that adapts to the available space. */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    /* Add space between the news cards. */
     gap: 1.5rem;
-    /* Limit the maximum width and center on the page. */
     max-width: 1200px;
-    /* Center the grid horizontally. */
     margin: 0 auto;
     width: 100%;
 }
 
-/* What's New individual card styles. */
 .whatsnew-card {
-    /* Use a semi-transparent border for the cards. */
     border: 1px solid rgba(255, 255, 255, 0.1);
-    /* Add a border radius for rounded corners. */
     border-radius: 6px;
-    /* Add padding around the content. */
     padding: 1.5rem;
-    /* Add a transition effect for the transform property on hover. */
     transition: transform 0.2s ease;
 }
 
-/* Hover effect for What's New cards. */
 .whatsnew-card:hover {
-    /* Slightly lift the card on hover. */
     transform: translateY(-3px);
 }
 
-/* What's New card date styles. */
 .whatsnew-date {
-    /* Use the sunset color for the date. */
     color: var(--sunset);
-    /* Set a smaller font size for the date. */
     font-size: 0.8rem;
-    /* Set font weight to semi-bold. */
     font-weight: 600;
-    /* Add space below the date. */
     margin-bottom: 0.5rem;
-    /* Make the date uppercase for emphasis. */
     text-transform: uppercase;
-    /* Add letter spacing for readability. */
     letter-spacing: 0.05rem;
 }
 
-/* What's New card title styles. */
 .whatsnew-card h3 {
-    /* Use the sand color for the card title. */
     color: var(--sand);
-    /* Set the font size for the card title. */
     font-size: 1.1rem;
-    /* Set the font weight for the card title. */
     font-weight: 400;
-    /* Add space below the title. */
     margin-bottom: 0.5rem;
 }
 
-/* What's New card description styles. */
 .whatsnew-card p {
-    /* Set the font size for the card description. */
     font-size: 0.85rem;
-    /* Set the font weight for the card description. */
     font-weight: 300;
-    /* Set the line height for the card description. */
     line-height: 1.7;
-    /* Use a slightly transparent birch color for the description. */
     color: rgba(245, 241, 235, 0.85);
     overflow-wrap: anywhere;
 }
 
-/* What's New card tag/badge styles. */
 .whatsnew-tag {
-    /* Display as inline-block for proper spacing. */
     display: inline-block;
-    /* Use a semi-transparent background. */
     background-color: rgba(95, 168, 211, 0.2);
-    /* Use the sky color for the tag text. */
     color: var(--sky);
-    /* Set a small font size. */
     font-size: 0.7rem;
-    /* Set font weight to semi-bold. */
     font-weight: 600;
-    /* Add padding around the tag text. */
     padding: 0.2rem 0.6rem;
-    /* Add a border radius for rounded corners. */
     border-radius: 3px;
-    /* Add space above the tag. */
     margin-top: 0.8rem;
-    /* Make the tag uppercase. */
     text-transform: uppercase;
 }
 
-/* Styles for the loading state of the gallery section. */
-.loading {
-    /* Align the loading text to center of the gallery section. */
-    text-align: center;
-    /* Add padding around the loading text. */
-    padding: 2rem;
-    /* Use the sky color for the loading text. */
-    color: var(--sky);
-    /* Assign grid-column: 1 / -1 to the loading element. */
-    grid-column: 1 / -1;
-}
-
-/* Styles for the spinner animation that appears next to the loading text. */
-.loading::after {
-    /* Use the content property to create a pseudo-element that will serve as the spinner. */
-    content: '';
-    /* Set the display to inline-block to allow the spinner to be positioned next to the loading text. */
-    display: inline-block;
-    /* Set a fixed width and height for the spinner to create a circular shape. */
-    width: 16px;
-    height: 16px;
-    /* Use a border-based approach to create the spinner, with a solid border that is mostly transparent except for one side. */
-    border: 2.5px solid rgba(95, 168, 211, 0.3);
-    /* Set the border-top-color to the sky color. */
-    border-top-color: var(--sky);
-    /* Add a border-radius of 50% to create a circular shape for the spinner. */
-    border-radius: 50%;
-    /* Use a keyframe animation to rotate the spinner indefinitely. */
-    animation: spin 0.8s linear infinite;
-    /* Add a left margin to create separation between the loading text and the spinner. */
-    margin-left: 0.5rem;
-    /* Vertically align the spinner to the middle of the loading text. */
-    vertical-align: middle;
-}
-
-/* Keyframe animation for the spinner. */
-@keyframes spin {
-
-    /* Rotate the spinner from 0 degrees to 360 degrees. */
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Footer styles. */
-.site-footer {
-    /* Assign the footer to the 'footer' grid area. */
-    grid-area: footer;
-    /* Use the pine color for the footer background. */
-    background-color: var(--pine);
-    /* Use the birch color for text in the footer. */
+/* About section. */
+.about-section {
+    padding: 3rem 2rem;
+    background-color: var(--lake);
     color: var(--birch);
-    /* Add padding around the footer content. */
-    padding: 1.5rem;
-    /* Add a border at the top of the footer. */
-    border-top: 3px solid var(--sunset);
 }
 
-/* Styles for the content within the footer. */
-.footer-content {
-    /* Use flexbox to layout the content within the footer. */
-    display: flex;
-    /* Justify the content with space between. */
-    justify-content: space-between;
-    /* Vertically align the items in the footer to the center. */
-    align-items: center;
-    /* Limit the maximum width of the footer content. */
-    max-width: 1200px;
-    /* Set the margin to auto to center the footer content horizontally on the page. */
+.about-content {
+    max-width: 800px;
     margin: 0 auto;
-    /* Allow the footer content to wrap to the next line on smaller screens. */
-    flex-wrap: wrap;
-    /* Add space between the elements in the footer content. */
-    gap: 1rem;
-    /* Use the birch color for the text in the footer content. */
-    color: var(--birch);
 }
 
-/* Styles for the paragraph text within the footer. */
-.footer-content p {
-    /* Set a smaller font size for the footer text. */
+.about-section h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.about-section p {
     font-size: 1rem;
-    /* Use the birch color for the footer text. */
-    color: var(--birch);
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 1rem;
 }
 
-/* Styles for the navigation links within the footer. */
-.footer-links {
-    /* Use flexbox to layout the navigation links within the footer. */
-    display: flex;
-    /* Remove default list styling from the footer links. */
-    list-style: none;
-    /* Add space between the footer links. */
-    gap: 1rem;
-    /* Use the birch color for the footer links. */
-    color: var(--birch);
+.about-section p:last-child {
+    margin-bottom: 0;
 }
 
-/* Styles for the individual links within the footer. */
-.footer-links a {
-    /* Set font size for the footer links. */
-    font-size: 1rem;
-    /* Add a transition effect for the hover effect on the footer links. */
-    transition: color;
-}
-
-/* Hover effect for the footer links. */
-.footer-links a:hover {
-    /* Set the color to the sunset color on hover. */
+.about-email {
     color: var(--sunset);
 }
 
-/* Keep section content from causing horizontal scrolling on narrow viewports. */
+/* Loading state. */
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--sky);
+    grid-column: 1 / -1;
+}
+
+.loading::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2.5px solid rgba(95, 168, 211, 0.3);
+    border-top-color: var(--sky);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Footer. */
+.site-footer {
+    grid-area: footer;
+    background-color: var(--pine);
+    color: var(--birch);
+    padding: 1.5rem;
+    border-top: 3px solid var(--sunset);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-content p {
+    font-size: 1rem;
+}
+
+.footer-links {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+
+.footer-links a {
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--sunset);
+}
+
+/* Prevent horizontal scrolling on narrow viewports. */
 .gallery-section,
 .services-section,
-.whatsnew-section {
+.whatsnew-section,
+.about-section {
     max-width: 100%;
     overflow-x: clip;
 }
 
-/* Media queries for tablet screens. */
+/* Tablet (max-width: 992px). */
 @media (max-width: 992px) {
 
-    /* Display the hamburger menu on tablet screens. */
     .hamburger {
-        /* Use flexbox to layout the hamburger menu. */
         display: flex;
     }
 
-    /* Hide the regular navigation links on tablet screens. */
     .nav-links {
-        /* Set the display to none for the regular navigation links on tablet screens. */
         display: none;
-        /* Use column flexbox layout for the navigation links when they are displayed in the mobile menu. */
         flex-direction: column;
-        /* Position the navigation links absolutely to create a dropdown menu when the hamburger menu is toggled. */
         position: absolute;
-        /* Position the navigation links below the header by setting top to 100%. */
         top: 100%;
-        /* Set left and right to 0. */
         left: 0;
         right: 0;
-        /* Use the lake color for the background of the navigation links when displayed as a dropdown menu. */
         background-color: var(--lake);
-        /* Add padding around the navigation links in the dropdown menu. */
         padding: 1.5rem;
-        /* Add space between the navigation links in the dropdown menu. */
         gap: 1rem;
-        /* Add a border at the top of the dropdown menu. */
         border-top: 3px solid var(--sunset);
     }
 
-    /* Display the navigation links as a dropdown menu when the hamburger menu is active. */
     .nav-links.active {
-        /* Set the display to flex for the navigation links when the hamburger menu is active and showing the dropdown menu. */
         display: flex;
     }
 
-    /* Adjust the navigation container to use relative positioning. */
     .nav-container {
-        /* Use relative positioning for the navigation container. */
         position: relative;
     }
 
-    /* Adjust the font size of the welcome heading on tablet screens. */
     .welcome h1 {
-        /* Set the font size for the welcome heading to be smaller on tablet screens. */
         font-size: 2rem;
     }
 
@@ -809,39 +553,26 @@ img {
         font-size: 0.95rem;
     }
 
-    /* Adjust the padding of the welcome screen content on tablet screens. */
     .gallery-grid {
-        /* Adjust the gallery grid layout on tablet screens. */
         grid-template-columns: 1fr;
-        /* Set the grid-template-rows to auto auto to allow the gallery items to stack vertically on tablet screens. */
         grid-template-rows: auto auto;
     }
 
-    /* Adjust the layout of the smaller grid of images on the left side of the gallery section on tablet screens. */
     .gallery-small-grid {
-        /* Set one column for the smaller grid of images on the left side of the gallery section on tablet screens. */
         grid-column: 1;
-        /* Set the grid-template-rows to auto to stack items vertically on tablet screens. */
         grid-row: auto;
     }
 
-    /* Adjust the layout of the larger featured image on the right side of the gallery section on tablet screens. */
     .gallery-large {
-        /* Set the larger featured image to take up the full width of the gallery grid on tablet screens. */
         grid-column: 1;
-        /* Set the grid-template-rows to auto to allow the larger featured image to take up the necessary height on tablet screens. */
         grid-row: auto;
     }
 
-    /* Adjust the height of the larger featured image on tablet screens. */
     .gallery-large img {
-        /* Set a fixed height for the larger featured image on tablet screens. */
         height: 300px;
     }
 
-    /* Adjust the layout of the services grid on tablet screens. */
     .services-grid {
-        /* Set the services grid to have 2 columns on tablet screens. */
         grid-template-columns: 1fr 1fr;
     }
 
@@ -851,7 +582,8 @@ img {
 
     .gallery-section,
     .services-section,
-    .whatsnew-section {
+    .whatsnew-section,
+    .about-section {
         padding: 2.5rem 1.5rem;
     }
 
@@ -861,7 +593,7 @@ img {
     }
 }
 
-/* Media queries for mobile screens. */
+/* Mobile (max-width: 576px). */
 @media (max-width: 576px) {
 
     .nav-container {
@@ -872,13 +604,11 @@ img {
         height: 44px;
     }
 
-    /* Adjust the font size of the welcome heading on mobile screens. */
     .welcome h1 {
         font-size: 1.4rem;
         line-height: 1.25;
     }
 
-    /* Adjust the padding of the welcome screen content on mobile screens. */
     .welcome-content {
         padding: 1rem 1rem 1rem;
         max-width: 100%;
@@ -895,33 +625,27 @@ img {
         margin-top: 0.5rem;
     }
 
-    /* Adjust the layout of the gallery grid on mobile screens. */
     .gallery-grid {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto;
     }
 
     .gallery-small-grid {
-        /* One column for the smaller grid of images on the left side of the gallery section on mobile screens. */
         grid-column: 1;
         grid-row: auto;
         grid-template-columns: 1fr;
     }
 
-    /* Adjust the layout of the larger featured image on the right side of the gallery section on mobile screens. */
     .gallery-large {
         grid-column: 1;
         grid-row: auto;
     }
 
     .gallery-large img {
-        /* Set a fixed height for the larger featured image on mobile screens. */
         height: 220px;
     }
 
-    /* Adjust the layout of the services grid on mobile screens. */
     .services-grid {
-        /* Set the services grid to have 1 column on mobile screens to stack items vertically. */
         grid-template-columns: 1fr;
     }
 
@@ -937,36 +661,31 @@ img {
 
     .gallery-section,
     .services-section,
-    .whatsnew-section {
+    .whatsnew-section,
+    .about-section {
         padding: 2rem 1rem;
     }
 
     .services-section h2,
     .whatsnew-section h2,
-    .gallery-section h2 {
+    .gallery-section h2,
+    .about-section h2 {
         font-size: 1.75rem;
     }
 
-    /* Adjust the layout of the footer content on mobile screens. */
     .footer-content {
-        /* Stack the elements in the footer content vertically on mobile screens. */
         flex-direction: column;
-        /* Center the elements in the footer content on mobile screens. */
         align-items: center;
-        /* Center the text in the footer content. */
         text-align: center;
     }
 
-    /* Adjust the layout of the footer links on mobile screens. */
     .footer-links {
-        /* Allow the footer links to wrap to the next line on mobile screens. */
         flex-wrap: wrap;
-        /* Center the footer links on mobile screens. */
         justify-content: center;
     }
 }
 
-/* Desktop: keep welcome content condensed to the left */
+/* Desktop: keep welcome content condensed to the left. */
 @media (min-width: 1200px) {
     .welcome-content {
         max-width: 720px;
@@ -974,5 +693,3 @@ img {
         padding-left: 2rem;
     }
 }
-
-/* End of CSS styles for the website. */
