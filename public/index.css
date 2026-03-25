@@ -82,7 +82,7 @@ img {
     /* Single column layout with auto rows for each section. */
     grid-template-columns: 1fr;
     /* Define rows for each section with auto height. */
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto auto auto;
     /* Assign named grid areas. */
     grid-template-areas:
         "header"
@@ -222,48 +222,54 @@ img {
 
 /* Welcome section styles. */
 .welcome {
-    /* Use relative positioning. */
+    
     position: relative;
-    /* Set a minimum height for the welcome section. With this value it will take up at least 70% of the viewport height. */
-    min-height: 70vh;
-    /* Hide any overflow content to prevent scrollbars from appearing if the background image is larger than the section. */
-    overflow: hidden;
-    /* Color for the welcome text. */
-    color: var(--white);
-}
-
-/* Background image styles for the welcome section, covering the entire area and maintaining aspect ratio. */
-.welcome-bg {
-    /* Use absolute positioning to place the background image behind the welcome content. */
-    position: absolute;
-    /* Use inset to cover the entire parent area even as the screen size decreases. */
-    inset: 0;
-}
-
-/* Welcome background image styles. */
-.welcome-bg img {
     width: 100%;
-    height: 100%;
-    /* Use object-fit to cover the area without distortion, cropping if necessary. */
-    object-fit: cover;
+    background: #000;
+    color: var(--white);
+    overflow: hidden;
 }
 
-/* Overlay styles to darken the background image for better text contrast. */
+/* Background container — in normal flow so the video drives the section height. */
+.welcome-bg {
+    display: block;
+    width: 100%;
+    /* Remove any line-height space below the video. */
+    font-size: 0;
+    line-height: 0;
+}
+
+/* Welcome background media styles. */
+.welcome-bg img,
+.welcome-bg video {
+    /* Fill the width; the HTML width/height attributes tell the browser the aspect ratio. */
+    width: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Overlay styles to darken the background video for better text contrast. */
 .welcome-overlay {
-    /* Use absolute positioning to place the overlay on top of the background image. */
+    /* Use absolute positioning to place the overlay on top of the background video. */
     position: absolute;
-    /* Use inset to cover the entire parent area even as the screen size decreases. */
+    /* Use inset to cover the entire section area. */
     inset: 0;
-    /* Use a semi-transparent black background to create a darkening effect over the background image. */
+    /* Use a semi-transparent black background to create a darkening effect over the background video. */
     background: rgba(0, 0, 0, 0.25);
+    /* Ensure overlay sits above the video. */
+    z-index: 1;
 }
 
-/* Welcome content styles to position the text above the background and overlay. */
+/* Welcome content styles — positioned on top of the video and overlay. */
 .welcome-content {
-    /* Use relative positioning to ensure the welcome content is above the background and overlay. */
-    position: relative;
-    /* Set a higher z-index to ensure the welcome content is above the background and overlay. */
-    z-index: 1;
+    /* Use absolute positioning to overlay the text on the video. */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Set a higher z-index to ensure the welcome content is above the overlay. */
+    z-index: 2;
     /* Limit the maximum width of the welcome content. */
     max-width: 800px;
     /* Add padding around the welcome content for spacing. */
@@ -274,6 +280,8 @@ img {
     flex-direction: column;
     /* Add space between the heading and paragraph for better readability. */
     gap: 0.8rem;
+    /* Prevent content from spilling out of the section. */
+    overflow: hidden;
 }
 
 /* Welcome heading styles. */
@@ -738,8 +746,7 @@ img {
 /* Keep section content from causing horizontal scrolling on narrow viewports. */
 .gallery-section,
 .services-section,
-.whatsnew-section,
-.welcome-content {
+.whatsnew-section {
     max-width: 100%;
     overflow-x: clip;
 }
@@ -867,20 +874,25 @@ img {
 
     /* Adjust the font size of the welcome heading on mobile screens. */
     .welcome h1 {
-        /* Set the font size for the welcome heading to be smaller on mobile screens. */
-        font-size: 1.9rem;
+        font-size: 1.4rem;
         line-height: 1.25;
     }
 
     /* Adjust the padding of the welcome screen content on mobile screens. */
     .welcome-content {
-        /* 5rem top padding, 1rem horizontal padding, and 3rem bottom padding. */
-        padding: 5rem 1rem 3rem;
+        padding: 1rem 1rem 1rem;
         max-width: 100%;
     }
 
     .welcome p {
-        font-size: 0.9rem;
+        font-size: 0.75rem;
+        line-height: 1.4;
+    }
+
+    .welcome-cta {
+        font-size: 0.85rem;
+        padding: 0.5rem 1.2rem;
+        margin-top: 0.5rem;
     }
 
     /* Adjust the layout of the gallery grid on mobile screens. */
@@ -958,7 +970,7 @@ img {
 @media (min-width: 1200px) {
     .welcome-content {
         max-width: 720px;
-        margin-left: 3rem;
+        left: 3rem;
         padding-left: 2rem;
     }
 }

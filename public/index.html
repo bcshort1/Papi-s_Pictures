@@ -45,14 +45,15 @@
         <!-- Main content area wrapping all page sections for semantic HTML. -->
         <main class="site-main">
 
-            <!-- Welcome section with a background image, overlay, and welcome message. -->
+            <!-- Welcome section with a background video, overlay, and welcome message. -->
             <section class="welcome" id="welcome">
                 <div class="welcome-bg">
-                    <!-- Background image for the welcome section, using an image with alt text for accessibility. Image comes from GitHub repo. -->
-                    <img src="https://github.com/bcshort1/papispictures.github.io/blob/main/assets/images/Point%20Betsie%20Sunny%20Day_DJI_20250905150029_0444_D-HDR_photos_db_sized_photo_32.png?raw=true"
-                        alt="Point Betsie">
+                    <!-- Background video for the welcome section, muted and looping for a smooth hero experience. -->
+                    <video width="1920" height="1080" autoplay muted loop playsinline preload="auto" poster="/assets/welcome_section_video/PointBetsieDawn_poster.jpg" aria-hidden="true">
+                        <source src="/assets/welcome_section_video/PointBetsieDawn_hero.mp4" type="video/mp4">
+                    </video>
                 </div>
-                <!-- Overlay to darken the background image and make the welcome message more readable. -->
+                <!-- Overlay to darken the background video and make the welcome message more readable. -->
                 <div class="welcome-overlay"></div>
                 <!-- Welcome message content, including a heading, description, and call-to-action. -->
                 <div class="welcome-content">
