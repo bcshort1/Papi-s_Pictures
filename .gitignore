@@ -2,4 +2,7 @@ node_modules
 .env
 media
 backup
-
+models
+db
+README-mongosh.md
+seed.js

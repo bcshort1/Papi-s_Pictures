@@ -2,42 +2,52 @@
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 
-//Add click event listener to the hamburger menu to toggle the 'active' class on both the hamburger and nav links. This will show or hide the navigation menu when the hamburger icon is clicked.
-hamburger.addEventListener('click', function () {
+//Toggle the hamburger menu and nav links visibility when the hamburger icon is clicked.
+function toggleMenu() {
     //Toggle the 'active' class on the hamburger menu and nav links to show or hide the navigation menu.
     hamburger.classList.toggle('active');
     //Toggle the 'active' class on the nav links to show or hide the navigation menu.
     navLinks.classList.toggle('active');
-});
-
-//Add click event listeners to each navigation link to remove the 'active' class from both the hamburger and nav links when a link is clicked. This will close the navigation menu after a link is selected.
-for (const link of navLinks.querySelectorAll('a')) {
-    link.addEventListener('click', function () {
-        //Remove the 'active' class from both the hamburger menu and nav links to close the navigation menu after a link is clicked.
-        hamburger.classList.remove('active');
-        //Remove the 'active' class from the nav links to close the navigation menu after a link is clicked.
-        navLinks.classList.remove('active');
-    });
 }
 
-//Add a keydown event listener to the document to listen for the Escape key. When the Escape key is pressed, it will remove the 'active' class from both the hamburger and nav links, closing the navigation menu if it is open.
-document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
+//Add click event listener to the hamburger menu to toggle the 'active' class on both the hamburger and nav links. This will show or hide the navigation menu when the hamburger icon is clicked.
+hamburger.addEventListener('click', toggleMenu);
+
+//Close the navigation menu by removing the 'active' class from both the hamburger and nav links.
+function closeMenu() {
+    //Remove the 'active' class from both the hamburger menu and nav links to close the navigation menu after a link is clicked.
+    hamburger.classList.remove('active');
+    //Remove the 'active' class from the nav links to close the navigation menu after a link is clicked.
+    navLinks.classList.remove('active');
+}
+
+//Add click event listeners to each navigation link to remove the 'active' class from both the hamburger and nav links when a link is clicked. This will close the navigation menu after a link is selected.
+var navigationLinks = navLinks.getElementsByTagName('a');
+for (var i = 0; i < navigationLinks.length; i++) {
+    navigationLinks[i].addEventListener('click', closeMenu);
+}
+
+//Close the navigation menu when the Escape key is pressed.
+function closeMenuOnEscape(event) {
+    if (event.key === 'Escape') {
         //Remove the 'active' class from both the hamburger menu and nav links to close the navigation menu when the Escape key is pressed.
         hamburger.classList.remove('active');
         //Remove the 'active' class from the nav links to close the navigation menu when the Escape key is pressed.
         navLinks.classList.remove('active');
     }
-});
+}
+
+//Add a keydown event listener to the document to listen for the Escape key. When the Escape key is pressed, it will remove the 'active' class from both the hamburger and nav links, closing the navigation menu if it is open.
+document.addEventListener('keydown', closeMenuOnEscape);
 
 // Helper to safely set text content on an element.
-function setText(el, tag, text) {
+function setText(element, tag, text) {
     //Create a new child element with the specified tag, set its text content, append it to the parent element, and return the child element. This is a utility function to simplify creating and populating elements in the DOM.
     var child = document.createElement(tag);
     //Set the text content of the child element to the provided text.
     child.textContent = text;
     //Append the child element to the parent element.
-    el.appendChild(child);
+    element.appendChild(child);
     //Return the child element that was created and appended to the parent element.
     return child;
 }
@@ -49,23 +59,29 @@ const galleryGrid = document.getElementById('galleryGrid');
 async function fetchGallery() {
     try {
         //Fetch the recent pictures from the API endpoint.
-        const res = await fetch('/api/recentPictures');
+        const response = await fetch('/api/recentPictures');
         //Check if the response is OK (status in the range 200-299). If not, throw an error to be caught in the catch block.
-        if (!res.ok) throw new Error('Fetch failed');
+        if (!response.ok) throw new Error('Fetch failed');
         //Parse the response as JSON to get the array of pictures.
-        const pictures = await res.json();
+        const pictures = await response.json();
 
-        //If not an array or empty, show a message indicating that no pictures are available and return early.
-        if (!Array.isArray(pictures) || pictures.length === 0) {
+        //If the response is empty or missing, show a message indicating that no pictures are available and return early.
+        if (!pictures || pictures.length === 0) {
             //Set the gallery grid's inner HTML to a message indicating that no pictures are available.
             galleryGrid.innerHTML = '<p class="loading" style="grid-column:1/-1;">No pictures available right now.</p>';
             //Return from the function to avoid further processing since there are no pictures to display. 
             return;
         }
 
+        //Filter function to check if a picture is not featured.
+        function isNotFeatured(picture) { return !picture.featured; }
+
+        //Filter function to check if a picture is featured.
+        function isFeatured(picture) { return picture.featured; }
+
         //Separate the pictures into small pictures (not featured) and the featured picture using a filter.
-        const smallPictures = pictures.filter(function (p) { return !p.featured; });
-        const featuredPicture = pictures.find(function (p) { return p.featured; });
+        const smallPictures = pictures.filter(isNotFeatured);
+        const featuredPicture = pictures.find(isFeatured);
 
         //Clear the gallery grid before adding new content.
         galleryGrid.innerHTML = '';
@@ -75,19 +91,19 @@ async function fetchGallery() {
         //Set the class name for the small pictures grid to apply appropriate styling.
         smallGrid.className = 'gallery-small-grid';
         //Loop through the small pictures and create elements for each one, appending them to the small grid.
-        for (const pic of smallPictures) {
+        for (const picture of smallPictures) {
             //Create a new div for each gallery item.
             var item = document.createElement('div');
             //Set the class name for the gallery item to apply appropriate styling.
             item.className = 'gallery-item';
-            //Create an img element for the picture.
-            var img = document.createElement('img');
-            //Set the src attribute of the img element to the file path of the picture, encoding the file name to ensure it is URL-safe.
-            img.src = '/media/' + encodeURIComponent(pic.fileName);
-            //Set the alt attribute of the img element to the alt text from the picture data for accessibility.
-            img.alt = pic.alt;
-            //Append the img element to the gallery item div.
-            item.appendChild(img);
+            //Create an image element for the picture.
+            var image = document.createElement('img');
+            //Set the src attribute of the image element to the file path of the picture, encoding the file name to ensure it is URL-safe.
+            image.src = '/media/' + encodeURIComponent(picture.fileName);
+            //Set the alt attribute of the image element to the alt text from the picture data for accessibility.
+            image.alt = picture.alt;
+            //Append the image element to the gallery item div.
+            item.appendChild(image);
             //Append the gallery item div to the small grid div.
             smallGrid.appendChild(item);
         }
@@ -100,20 +116,20 @@ async function fetchGallery() {
             var largeItem = document.createElement('div');
             //Set the class name for the large gallery item to apply appropriate styling, including making it larger than the small items.
             largeItem.className = 'gallery-large gallery-item';
-            //Create an img element for the featured picture.
-            var img = document.createElement('img');
-            //Set the src attribute of the img element to the file path of the featured picture, encoding the file name to ensure it is URL-safe.
-            img.src = '/media/' + encodeURIComponent(featuredPicture.fileName);
-            //Set the alt attribute of the img element to the alt text from the featured picture data for accessibility.
-            img.alt = featuredPicture.alt;
+            //Create an image element for the featured picture.
+            var image = document.createElement('img');
+            //Set the src attribute of the image element to the file path of the featured picture, encoding the file name to ensure it is URL-safe.
+            image.src = '/media/' + encodeURIComponent(featuredPicture.fileName);
+            //Set the alt attribute of the image element to the alt text from the featured picture data for accessibility.
+            image.alt = featuredPicture.alt;
             //Append the img element to the large gallery item div.
-            largeItem.appendChild(img);
+            largeItem.appendChild(image);
             //Append the large gallery item div to the main gallery grid, ensuring it is displayed alongside the small pictures.
             galleryGrid.appendChild(largeItem);
         }
-    } catch (err) {
+    } catch (error) {
         //If an error occurs during the fetch or processing of the pictures, log the error to the console.
-        console.error(err);
+        console.error(error);
         //Set the gallery grid's inner HTML to a message indicating that the gallery could not be loaded due to an error.
         galleryGrid.innerHTML = '<p class="loading" style="grid-column:1/-1;">Unable to load gallery.</p>';
     }
@@ -132,16 +148,16 @@ const whatsNewGrid = document.getElementById('whatsNewGrid');
 async function fetchServices() {
     try {
         //Fetch the entire database from the API endpoint.
-        const res = await fetch('/api');
+        const response = await fetch('/api');
         //Check if the response is OK (status in the range 200-299). If not, throw an error to be caught in the catch block.
-        if (!res.ok) throw new Error('Fetch failed');
+        if (!response.ok) throw new Error('Fetch failed');
         //Parse the response as JSON to get the data object containing services and what's new items.
-        const data = await res.json();
+        const data = await response.json();
 
         //Extract the photo/video services and what's new items from the data, ensuring they are arrays. If they are not arrays, default to empty arrays to prevent errors during processing.
-        const serviceItems = Array.isArray(data.photoVideoServices) ? data.photoVideoServices : [];
+        const serviceItems = data.photoVideoServices || [];
         //Extract the what's new items from the data, ensuring it is an array. If it is not an array, default to an empty array to prevent errors during processing.
-        const whatsNewItems = Array.isArray(data.whatsNewItems) ? data.whatsNewItems : [];
+        const whatsNewItems = data.whatsNewItems || [];
 
         //Clear the services grid and what's new grid before adding new content.
         servicesGrid.innerHTML = '';
@@ -160,23 +176,23 @@ async function fetchServices() {
         }
 
         //Loop through the service items and create elements for each one, appending them to the services grid.
-        for (const svc of serviceItems) {
+        for (const service of serviceItems) {
             //Create a new div for each service card.
             var card = document.createElement('div');
             //Set the class name for the service card to apply appropriate styling.
             card.className = 'service-card';
 
             //Use the setText helper function to create and append elements for the service name, description, and price within the service card.
-            setText(card, 'h3', svc.serviceName);
+            setText(card, 'h3', service.serviceName);
             //Use the setText helper function to create and append a paragraph element for the service description within the service card.
-            setText(card, 'p', svc.serviceDescription);
+            setText(card, 'p', service.serviceDescription);
 
             //Create a new div for the service price and set its class name for styling. Format the price with a dollar sign and use toLocaleString to add commas for thousands. Append a span element to indicate that the price is per each service.
             var priceDiv = document.createElement('div');
             //Set the class name for the service price div to apply appropriate styling.
             priceDiv.className = 'service-price';
             //Set the text content of the price div to the formatted price, including a dollar sign and commas for thousands, followed by a span indicating that the price is per each service.
-            priceDiv.textContent = '$' + svc.price.toLocaleString() + ' ';
+            priceDiv.textContent = '$' + service.price.toLocaleString() + ' ';
             //Create a span element to indicate that the price is per each service and append it to the price div.
             var span = document.createElement('span');
             //Set the text content of the span element to indicate that the price is per each service.
@@ -214,9 +230,9 @@ async function fetchServices() {
             //Append the what's new card to the what's new grid to display it on the page.
             whatsNewGrid.appendChild(card);
         }
-    } catch (err) {
+    } catch (error) {
         //If an error occurs during the fetch or processing of the services and what's new items, log the error to the console.
-        console.error(err);
+        console.error(error);
         //Set the services grid and what's new grid's inner HTML to messages indicating that the data could not be loaded due to an error.
         servicesGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;opacity:0.5;">Unable to load services.</p>';
         whatsNewGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;opacity:0.5;">Unable to load updates.</p>';
